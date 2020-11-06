@@ -14,9 +14,10 @@
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="54dp"
+            android:layout_height="53dp"
             android:contentDescription="Logo"
-            app:srcCompat="@drawable/Logo" />
+            app:srcCompat="@drawable/topbar_logo"
+            tools:srcCompat="@drawable/topbar_logo" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
@@ -24,6 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
 
+            app:tabIndicatorColor="#9C27B0"
             app:tabMode="scrollable">
 
             <com.google.android.material.tabs.TabItem
