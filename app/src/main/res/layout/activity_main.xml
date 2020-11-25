@@ -78,7 +78,7 @@
                         <TextView
                             android:id="@+id/textView1"
                             android:layout_width="298dp"
-                            android:layout_height="17dp"
+                            android:layout_height="19dp"
                             android:layout_gravity="center"
                             android:layout_weight="1"
                             android:text="To Aru Majutsu No Index"
@@ -104,7 +104,7 @@
                         <TextView
                             android:id="@+id/textView2"
                             android:layout_width="298dp"
-                            android:layout_height="17dp"
+                            android:layout_height="19dp"
                             android:layout_gravity="center"
                             android:layout_weight="1"
                             android:text="To Aru Majutsu No Index"
@@ -130,7 +130,7 @@
                         <TextView
                             android:id="@+id/textView3"
                             android:layout_width="298dp"
-                            android:layout_height="17dp"
+                            android:layout_height="19dp"
                             android:layout_gravity="center"
                             android:layout_weight="1"
                             android:text="To Aru Majutsu No Index"
@@ -156,7 +156,7 @@
                         <TextView
                             android:id="@+id/textView4"
                             android:layout_width="298dp"
-                            android:layout_height="17dp"
+                            android:layout_height="19dp"
                             android:layout_gravity="center"
                             android:layout_weight="1"
                             android:text="To Aru Majutsu No Index"
@@ -182,7 +182,7 @@
                         <TextView
                             android:id="@+id/textView5"
                             android:layout_width="298dp"
-                            android:layout_height="17dp"
+                            android:layout_height="19dp"
                             android:layout_gravity="center"
                             android:layout_weight="1"
                             android:text="To Aru Majutsu No Index"
@@ -208,7 +208,7 @@
                         <TextView
                             android:id="@+id/textView6"
                             android:layout_width="298dp"
-                            android:layout_height="17dp"
+                            android:layout_height="19dp"
                             android:layout_gravity="center"
                             android:layout_weight="1"
                             android:text="To Aru Majutsu No Index"
@@ -234,7 +234,7 @@
                         <TextView
                             android:id="@+id/textView7"
                             android:layout_width="298dp"
-                            android:layout_height="17dp"
+                            android:layout_height="19dp"
                             android:layout_gravity="center"
                             android:layout_weight="1"
                             android:text="To Aru Majutsu No Index"
@@ -260,7 +260,7 @@
                         <TextView
                             android:id="@+id/textView8"
                             android:layout_width="298dp"
-                            android:layout_height="17dp"
+                            android:layout_height="19dp"
                             android:layout_gravity="center"
                             android:layout_weight="1"
                             android:textAlignment="center"
