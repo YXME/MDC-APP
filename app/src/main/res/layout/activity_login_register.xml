@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="69dp"
             android:layout_marginBottom="5dp"
-            android:contentDescription="Logo"
+            android:contentDescription="@string/pl_Logo"
             app:srcCompat="@drawable/login_logo" />
 
         <TextView
@@ -29,10 +29,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:text="LIVE THE TRUE GOLDEN EXPERIENCE"
+            android:text="@string/catchphrase"
             android:textAlignment="center"
             android:textColor="#FFFF00"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/TabSelector"
@@ -44,13 +44,13 @@
                 android:id="@+id/LoginTab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="CONNEXION" />
+                android:text="@string/action_sign_in" />
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/RegisterTab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="S'ENREGISTRER" />
+                android:text="@string/action_register" />
 
         </com.google.android.material.tabs.TabLayout>
 

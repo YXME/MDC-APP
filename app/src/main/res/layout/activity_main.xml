@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:background="#673AB7"
-            android:contentDescription="Logo"
+            android:contentDescription="@string/pl_Logo"
             app:srcCompat="@drawable/topbar_logo"
             tools:srcCompat="@drawable/topbar_logo" />
 
@@ -36,12 +36,12 @@
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nouveautés" />
+                android:text="@string/main_new" />
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Recommandés" />
+                android:text="@string/main_recommended" />
 
         </com.google.android.material.tabs.TabLayout>
 
@@ -59,13 +59,6 @@
             android:layout_height="match_parent"
             tools:context=".MainActivity">
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 

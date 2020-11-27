@@ -1,9 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">MangaDigitalCollection</string>
     <string name="catchphrase">LIVE THE TRUE GOLDEN EXPERIENCE</string>
-    <string name="prompt_email">Adresse email</string>
-    <string name="prompt_password">Mot de passe</string>
-    <string name="prompt_username">Nom d\'utilisateur</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
     <string name="action_sign_in">Connexion"</string>
     <string name="action_register">S\'enregistrer</string>
     <string name="pl_Logo">Logo</string>
