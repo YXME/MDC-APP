@@ -1,5 +1,7 @@
 package com.example.mangadigitalcollection;
 
+import org.json.JSONObject;
+
 public class Reference {
     private int Id;
     private String Name;
@@ -9,11 +11,12 @@ public class Reference {
     private int NbTomes;
     private int EditeurID;
     private boolean IsAnime;
-    private int NbEpisodes;
+    private int NbSaisons;
+    private int NbEpisodesTotal;
     private int StudioID;
     private int LicenceID;
 
-    public Reference(int id, String name, String original_Name, String illustrationLink, boolean isManga, int nbTomes, int editeurID, boolean isAnime, int nbEpisodes, int studioID, int licenceID) {
+    public Reference(int id, String name, String original_Name, String illustrationLink, boolean isManga, int nbTomes, int editeurID, boolean isAnime, int nbSaisons, int nbEpisodesTotal, int studioID, int licenceID) {
         this.Id = id;
         this.Name = name;
         this.Original_Name = original_Name;
@@ -22,9 +25,32 @@ public class Reference {
         this.NbTomes = nbTomes;
         this.EditeurID = editeurID;
         this.IsAnime = isAnime;
-        this.NbEpisodes = nbEpisodes;
+        this.NbSaisons = nbSaisons;
+        this.NbEpisodesTotal = nbEpisodesTotal;
         this.StudioID = studioID;
         this.LicenceID = licenceID;
+    }
+
+    public Reference(JSONObject optJSONObject) {
+        this.Id = optJSONObject.optInt("id");
+        this.Name = optJSONObject.optString("name");
+        this.Original_Name = optJSONObject.optString("original_name");
+        this.IllustrationLink = optJSONObject.optString("illustrationlink");
+        this.IsManga = optJSONObject.optBoolean("isManga");
+
+        if(this.IsManga){
+            this.NbTomes = optJSONObject.optInt("nbTomes");
+            this.EditeurID = optJSONObject.optInt("edition");;
+        }
+
+        this.IsAnime = optJSONObject.optBoolean("isAnime");
+        if(this.IsAnime){
+            this.NbSaisons = optJSONObject.optInt("nbSaisons");
+            this.NbEpisodesTotal = optJSONObject.optInt("nbEpisodesTotal");
+            this.StudioID = optJSONObject.optInt("studio");
+        }
+
+        this.LicenceID = optJSONObject.optInt("licence_id");;
     }
 
     public int getId() {
@@ -59,8 +85,12 @@ public class Reference {
         return IsAnime;
     }
 
-    public int getNbEpisodes() {
-        return NbEpisodes;
+    public int getNbSaisons() {
+        return NbSaisons;
+    }
+
+    public int getNbEpisodesTotal() {
+        return NbEpisodesTotal;
     }
 
     public int getStudioID() {

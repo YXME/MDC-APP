@@ -32,6 +32,7 @@ public class LoginFragment extends Fragment {
     private EditText Password;
     private TextView ErrorMessage;
     private Button Validation;
+    private ConnexionRest connectionRest;
 
     public LoginFragment() {
         // Required empty public constructor
@@ -55,7 +56,7 @@ public class LoginFragment extends Fragment {
             jsonAuth.put("password", Password);
             jsonAuth.put("app", "MNA");
 
-            ConnexionRest connectionRest = new ConnexionRest();
+            connectionRest = new ConnexionRest();
             connectionRest.setObj(jsonAuth);
             connectionRest.setAction("auth");
             connectionRest.execute("POST");
@@ -89,7 +90,6 @@ public class LoginFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_login, container, false);
-        // Inflate the layout for this fragment
         Email = (EditText) view.findViewById(R.id.LoginMail);
         Password = (EditText) view.findViewById(R.id.LoginPassword);
         ErrorMessage = view.findViewById(R.id.LoginErrorMessage);
@@ -107,10 +107,10 @@ public class LoginFragment extends Fragment {
                     ErrorMessage.setText("Adresse email ou mot de passe incorrect.");
                 } else {
                     Intent intent = new Intent(getActivity(), MainActivity.class);
+                    intent.putExtra("TOKEN", response);
                     startActivity(intent);
                     getActivity().finish();
                 }
-
             }
         });
         return view;

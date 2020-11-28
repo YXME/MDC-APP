@@ -23,7 +23,7 @@ public class ConnexionRest extends AsyncTask <String, Void, String>  {
 
     private final static String URL = "http://54.38.187.95/jwt/";
     private JSONObject jsonObj = null;
-    private String action = "user";
+    private String action = null;
     private String token = null;
 
     @Override
