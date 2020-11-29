@@ -11,22 +11,39 @@ import com.example.mangadigitalcollection.ui.RegisterFragment;
 public class PagerAdapter extends FragmentPagerAdapter {
 
     private int numOfTabs;
+    private String context;
 
-    public PagerAdapter(FragmentManager fm, int numOfTabs) {
+    public PagerAdapter(FragmentManager fm, int numOfTabs, String context) {
         super(fm);
         this.numOfTabs = numOfTabs;
+        this.context = context;
     }
 
     @Override
     public Fragment getItem(int position) {
-        switch(position){
-            case 0:
-                return new LoginFragment();
-            case 1:
-                return new RegisterFragment();
-            default:
-                return null;
+        if(this.context == "login")
+        {
+            switch(position) {
+                case 0:
+                    return new LoginFragment();
+                case 1:
+                    return new RegisterFragment();
+                default:
+                    return null;
+            }
         }
+        else if(this.context == "main"){
+            switch(position) {
+                case 0:
+                    return new NewFragment();
+                case 1:
+                    //return new RecommendFragment();
+                    return new NewFragment();
+                default:
+                    return null;
+            }
+        }
+        else return null;
     }
 
     @Override

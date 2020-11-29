@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.mangadigitalcollection.ConnexionRest;
+import com.example.mangadigitalcollection.DataFromAPI;
 import com.example.mangadigitalcollection.LoginRegisterActivity;
 import com.example.mangadigitalcollection.MainActivity;
 import com.example.mangadigitalcollection.R;
@@ -107,7 +108,8 @@ public class LoginFragment extends Fragment {
                     ErrorMessage.setText("Adresse email ou mot de passe incorrect.");
                 } else {
                     Intent intent = new Intent(getActivity(), MainActivity.class);
-                    intent.putExtra("TOKEN", response);
+                    DataFromAPI.setConnexionRest(connectionRest);
+                    DataFromAPI.setToken(response);
                     startActivity(intent);
                     getActivity().finish();
                 }
