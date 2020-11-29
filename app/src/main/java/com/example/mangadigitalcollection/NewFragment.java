@@ -16,7 +16,8 @@ import java.util.List;
 public class NewFragment extends Fragment {
 
     private View view;
-    private List<TableRow> ReferenceList = new ArrayList<TableRow>();
+    private ArrayList<TableRow> ReferenceList = new ArrayList<TableRow>();
+    private List<Reference> New;
 
     public NewFragment() {
         // Required empty public constructor
@@ -39,6 +40,7 @@ public class NewFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_new, container, false);
+
 
         return view;
     }
