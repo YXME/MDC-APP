@@ -43,6 +43,7 @@ public class PagerAdapter extends FragmentPagerAdapter {
                     return null;
             }
         }
+
         else return null;
     }
 

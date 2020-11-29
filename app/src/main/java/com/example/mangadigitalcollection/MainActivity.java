@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) actionBar.hide();
 
+
         TabSelector = findViewById(R.id.tabLayout);
         TabsContainer = findViewById(R.id.TabsContainer);
 

@@ -30,8 +30,10 @@ import java.util.List;
 public class NewFragment extends Fragment {
 
     private View view;
+
     private TableLayout TableContainer;
     private String token;
+  
     private List<Reference> New;
 
     public NewFragment() {
@@ -88,8 +90,8 @@ public class NewFragment extends Fragment {
             );
 
             illustration.setLayoutParams(params);
-            illustration.getLayoutParams().width = 111;
-            illustration.getLayoutParams().height = 162;
+            //illustration.getLayoutParams().width = 111;
+            //illustration.getLayoutParams().height = 162;
 
             layout.addView(illustration);
             layout.addView(title);
