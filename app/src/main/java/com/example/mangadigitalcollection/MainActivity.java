@@ -26,9 +26,6 @@ import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
 
-    String token = null;
-    List<Reference> New = new ArrayList<Reference>();
-    List<Reference> Recommended = new ArrayList<Reference>();
     private ViewPager TabsContainer;
     private TabLayout TabSelector;
 
@@ -41,8 +38,9 @@ public class MainActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) actionBar.hide();
 
-        TabSelector = findViewById(R.id.TabSelector);
-        TabsContainer = findViewById(R.id.TabsContainers);
+
+        TabSelector = findViewById(R.id.tabLayout);
+        TabsContainer = findViewById(R.id.TabsContainer);
 
         PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager(), TabSelector.getTabCount(),"main");
 

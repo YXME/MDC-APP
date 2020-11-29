@@ -21,9 +21,9 @@ public class PagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        if (this.context == "login"){
-
-            switch(position){
+        if(this.context == "login")
+        {
+            switch(position) {
                 case 0:
                     return new LoginFragment();
                 case 1:
@@ -31,17 +31,19 @@ public class PagerAdapter extends FragmentPagerAdapter {
                 default:
                     return null;
             }
-
         }
-        else if (this.context == "main"){
-            switch(position){
+        else if(this.context == "main"){
+            switch(position) {
                 case 0:
                     return new NewFragment();
                 case 1:
-                    return new RecommendFragment();
+                    //return new RecommendFragment();
+                    return new NewFragment();
                 default:
                     return null;
+            }
         }
+
         else return null;
     }
 

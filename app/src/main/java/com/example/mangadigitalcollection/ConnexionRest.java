@@ -1,13 +1,9 @@
 package com.example.mangadigitalcollection;
 
     import android.os.AsyncTask;
-    import android.util.Log;
 
-    import org.json.JSONArray;
     import org.json.JSONException;
     import org.json.JSONObject;
-
-    import com.example.mangadigitalcollection.User;
 
     import java.io.BufferedReader;
     import java.io.IOException;
@@ -17,7 +13,6 @@ package com.example.mangadigitalcollection;
     import java.net.HttpURLConnection;
     import java.net.URL;
     import java.net.URLEncoder;
-    import java.util.ArrayList;
 
 public class ConnexionRest extends AsyncTask <String, Void, String>  {
 
