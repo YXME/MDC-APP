@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">MangaDigitalCollection</string>
     <string name="catchphrase">LIVE THE TRUE GOLDEN EXPERIENCE</string>
@@ -9,6 +10,4 @@
     <string name="pl_Logo">Logo</string>
     <string name="main_new">Nouveautés</string>
     <string name="main_recommended">Recommandés</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
