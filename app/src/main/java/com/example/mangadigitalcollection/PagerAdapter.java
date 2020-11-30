@@ -37,11 +37,11 @@ public class PagerAdapter extends FragmentPagerAdapter {
                 case 0:
                     return new NewFragment();
                 case 1:
-                    //return new RecommendFragment();
-                    return new NewFragment();
+                    return new RecommendFragment();
                 default:
                     return null;
             }
+
         }
 
         else return null;
