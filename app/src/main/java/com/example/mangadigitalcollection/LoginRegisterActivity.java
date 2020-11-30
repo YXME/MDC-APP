@@ -1,48 +1,38 @@
 package com.example.mangadigitalcollection;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
-import android.content.Intent;
-
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.Button;
+import android.widget.LinearLayout;
 
+import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.sql.Ref;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
 
-
-public class MainActivity extends AppCompatActivity {
+public class LoginRegisterActivity extends AppCompatActivity {
 
     private ViewPager TabsContainer;
     private TabLayout TabSelector;
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login_register);
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) actionBar.hide();
 
+        TabSelector = findViewById(R.id.TabSelector);
+        TabsContainer = findViewById(R.id.TabsContainers);
 
-        TabSelector = findViewById(R.id.tabLayout);
-        TabsContainer = findViewById(R.id.TabsContainer);
-
-        PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager(), TabSelector.getTabCount(),"main");
+        PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager(), TabSelector.getTabCount(), "login");
 
         TabsContainer.setAdapter(pagerAdapter);
 
@@ -62,6 +52,5 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
     }
 }

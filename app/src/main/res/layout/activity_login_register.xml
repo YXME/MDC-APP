@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginRegisterActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/MDC_Logo"
+            android:layout_width="match_parent"
+            android:layout_height="69dp"
+            android:layout_marginBottom="5dp"
+            android:contentDescription="@string/pl_Logo"
+            app:srcCompat="@drawable/login_logo" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="@string/catchphrase"
+            android:textAlignment="center"
+            android:textColor="#FFFF00"
+            android:textSize="20sp" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/TabSelector"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabIndicatorColor="#9C27B0">
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/LoginTab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/action_sign_in" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/RegisterTab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/action_register" />
+
+        </com.google.android.material.tabs.TabLayout>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/TabsContainers"
+            android:layout_width="match_parent"
+            android:layout_height="304dp">
+
+        </androidx.viewpager.widget.ViewPager>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
