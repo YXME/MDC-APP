@@ -1,8 +1,5 @@
-package com.example.mangadigitalcollection;
+package com.example.mangadigitalcollection.ui;
 
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -17,31 +14,30 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.example.mangadigitalcollection.DataFromAPI;
+import com.example.mangadigitalcollection.R;
 import com.example.mangadigitalcollection.dataStorage.Reference;
 import com.squareup.picasso.Picasso;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.Collections;
 import java.util.List;
 
 
-public class NewFragment extends Fragment {
+public class RecommendFragment extends Fragment {
 
     private View view;
 
     private TableLayout TableContainer;
     private String token;
-  
+
     private List<Reference> New;
 
-    public NewFragment() {
+    public RecommendFragment() {
         // Required empty public constructor
     }
 
-    public static NewFragment newInstance() {
-        NewFragment fragment = new NewFragment();
+    public static RecommendFragment newInstance() {
+        RecommendFragment fragment = new RecommendFragment();
 
         return fragment;
     }
@@ -66,7 +62,7 @@ public class NewFragment extends Fragment {
 
         int Max = 8;
         if(New.size() < 8){
-           Max = New.size();
+            Max = New.size();
         }
 
         for(int i = 0; i < Max; i++)
