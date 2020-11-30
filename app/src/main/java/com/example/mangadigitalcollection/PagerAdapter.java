@@ -1,11 +1,12 @@
 package com.example.mangadigitalcollection;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.mangadigitalcollection.ui.LoginFragment;
+import com.example.mangadigitalcollection.ui.NewFragment;
+import com.example.mangadigitalcollection.ui.RecommendFragment;
 import com.example.mangadigitalcollection.ui.RegisterFragment;
 
 public class PagerAdapter extends FragmentPagerAdapter {
