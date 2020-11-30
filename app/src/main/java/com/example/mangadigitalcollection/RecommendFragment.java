@@ -27,21 +27,21 @@ import java.util.Collections;
 import java.util.List;
 
 
-public class NewFragment extends Fragment {
+public class RecommendFragment extends Fragment {
 
     private View view;
 
     private TableLayout TableContainer;
     private String token;
-  
+
     private List<Reference> New;
 
-    public NewFragment() {
+    public RecommendFragment() {
         // Required empty public constructor
     }
 
-    public static NewFragment newInstance() {
-        NewFragment fragment = new NewFragment();
+    public static RecommendFragment newInstance() {
+        RecommendFragment fragment = new RecommendFragment();
 
         return fragment;
     }
@@ -66,7 +66,7 @@ public class NewFragment extends Fragment {
 
         int Max = 8;
         if(New.size() < 8){
-           Max = New.size();
+            Max = New.size();
         }
 
         for(int i = 0; i < Max; i++)

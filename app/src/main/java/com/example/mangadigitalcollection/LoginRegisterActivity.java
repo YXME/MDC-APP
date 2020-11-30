@@ -20,8 +20,6 @@ public class LoginRegisterActivity extends AppCompatActivity {
 
     private ViewPager TabsContainer;
     private TabLayout TabSelector;
-    private TabItem LoginTab;
-    private TabItem RegisterTab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +29,10 @@ public class LoginRegisterActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) actionBar.hide();
 
-        LoginTab = findViewById(R.id.LoginTab);
-        RegisterTab = findViewById(R.id.RegisterTab);
         TabSelector = findViewById(R.id.TabSelector);
         TabsContainer = findViewById(R.id.TabsContainers);
 
-        PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager(), TabSelector.getTabCount());
+        PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager(), TabSelector.getTabCount(), "login");
 
         TabsContainer.setAdapter(pagerAdapter);
 
@@ -56,6 +52,5 @@ public class LoginRegisterActivity extends AppCompatActivity {
 
             }
         });
-
     }
 }
