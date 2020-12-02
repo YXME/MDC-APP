@@ -13,8 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MangaDigitalCollection"
         android:usesCleartextTraffic="true">
-        <activity android:name=".random"></activity>
-        <activity android:name=".Profil" />
+        <activity android:name=".RandomActivity"></activity>
+        <activity android:name=".ProfilActivity" />
         <activity android:name=".LoginRegisterActivity" />
         <activity android:name=".SplashScreen">
             <intent-filter>
