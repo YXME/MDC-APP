@@ -1,10 +1,15 @@
 package com.example.mangadigitalcollection.ui;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
+import android.provider.CalendarContract;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,11 +23,13 @@ import android.widget.TextView;
 import com.example.mangadigitalcollection.DataFromAPI;
 import com.example.mangadigitalcollection.MainActivity;
 import com.example.mangadigitalcollection.R;
+import com.example.mangadigitalcollection.dataStorage.Ads;
 import com.example.mangadigitalcollection.dataStorage.Reference;
 import com.squareup.picasso.Picasso;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 
 public class NewFragment extends Fragment {
@@ -31,8 +38,9 @@ public class NewFragment extends Fragment {
 
     private TableLayout TableContainer;
     private String token;
-  
+
     private List<Reference> New;
+    private List<Ads> AdList;
 
     public NewFragment() {
         // Required empty public constructor
@@ -49,6 +57,7 @@ public class NewFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -59,8 +68,10 @@ public class NewFragment extends Fragment {
         DataFromAPI.FetchDataFromAPI();
         TableContainer = view.findViewById(R.id.tableContainer);
 
+        AdList = DataFromAPI.getAdsList();
         New = DataFromAPI.getReferenceList();
         Collections.reverse(New);
+
 
         int Max = 8;
         if(New.size() < 8){
@@ -72,35 +83,63 @@ public class NewFragment extends Fragment {
             TableRow row = new TableRow(getActivity());
             LinearLayout layout = new LinearLayout(getActivity());
             ImageView illustration = new ImageView(getActivity());
-            TextView title = new TextView(getActivity());
 
-            row.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT));
-            layout.setOrientation(LinearLayout.HORIZONTAL);
-            title.setGravity(Gravity.CENTER);
-            title.setTextAlignment(TextView.TEXT_ALIGNMENT_CENTER);
+            if(i == 2 || i == 5){
+                Random AdId = new Random();
 
-            title.setText(New.get(i).getName());
-            Picasso.get().load(New.get(i).getIllustrationLink()).into(illustration);
+                row.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT));
+                layout.setOrientation(LinearLayout.HORIZONTAL);
 
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT
-            );
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT
+                );
 
-            illustration.setLayoutParams(params);
-            //illustration.getLayoutParams().width = 111;
-            //illustration.getLayoutParams().height = 162;
+                Picasso.get().load(AdList.get(AdId.nextInt(3 - 1 + 1) + 1).getUrl()).resize(700, 1000).into(illustration);
 
-            layout.addView(illustration);
-            layout.addView(title);
-            row.addView(layout);
-            TableContainer.addView(row);
-            int finalI = i;
-            row.setOnClickListener(v -> {
-                Intent intent = new Intent(getActivity(), MainActivity.class);
-                intent.putExtra("REFERENCE_ID", New.get(finalI).getId());
-                startActivity(intent);
-            });
+                illustration.setLayoutParams(params);
+                illustration.getLayoutParams().width = 350;
+                illustration.getLayoutParams().height = 500;
+
+                layout.addView(illustration);
+                row.addView(layout);
+                TableContainer.addView(row);
+            }
+            else {
+                TextView title = new TextView(getActivity());
+
+                row.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT));
+                layout.setOrientation(LinearLayout.HORIZONTAL);
+
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT
+                );
+
+                title.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
+                title.setTextAlignment(TextView.TEXT_ALIGNMENT_CENTER);
+                title.setText(New.get(i).getName());
+                title.setTextColor(Color.WHITE);
+                //title.setLayoutParams(params);
+//            title.getLayoutParams().width = 1000;
+
+                Picasso.get().load(New.get(i).getIllustrationLink()).resize(700, 1000).into(illustration);
+
+                illustration.setLayoutParams(params);
+                illustration.getLayoutParams().width = 350;
+                illustration.getLayoutParams().height = 500;
+
+                layout.addView(illustration);
+                layout.addView(title);
+                row.addView(layout);
+                TableContainer.addView(row);
+                int finalI = i;
+                row.setOnClickListener(v -> {
+                    Intent intent = new Intent(getActivity(), MainActivity.class);
+                    intent.putExtra("REFERENCE_ID", New.get(finalI).getId());
+                    startActivity(intent);
+                });
+            }
         }
         return view;
     }

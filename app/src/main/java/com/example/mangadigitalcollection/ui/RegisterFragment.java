@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.mangadigitalcollection.ConnexionRest;
+import com.example.mangadigitalcollection.DataFromAPI;
 import com.example.mangadigitalcollection.MainActivity;
 import com.example.mangadigitalcollection.R;
 
@@ -74,6 +75,7 @@ public class RegisterFragment extends Fragment {
                         Log.v("LoginActivity", token);
                     }else {
                         Intent intent = new Intent(getActivity(), MainActivity.class);
+                        DataFromAPI.setToken(token);
                         startActivity(intent);
                         getActivity().finish();
                     }

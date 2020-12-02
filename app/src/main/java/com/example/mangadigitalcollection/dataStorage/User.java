@@ -2,11 +2,14 @@ package com.example.mangadigitalcollection.dataStorage;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 public class User {
     private int Id;
     private String Username;
     private String PictureUrl;
     private String Biographie;
+    private ArrayList<Liste> Listes;
 
     public User(int id, String username, String illustrationLink, String biographie) {
         this.Id = id;
@@ -14,7 +17,6 @@ public class User {
         this.PictureUrl = illustrationLink;
         this.Biographie = biographie;
     }
-
 
     public User(JSONObject optJSONObject) {
         this.Id = optJSONObject.optInt("id");
@@ -31,8 +33,15 @@ public class User {
         return Username;
     }
 
-
     public String getBiographie() {
         return Biographie;
+    }
+
+    public ArrayList<Liste> getListes() {
+        return Listes;
+    }
+
+    public void setListes(ArrayList<Liste> listes) {
+        Listes = listes;
     }
 }

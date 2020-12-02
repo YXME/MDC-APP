@@ -96,6 +96,9 @@ public class LoginFragment extends Fragment {
         ErrorMessage = view.findViewById(R.id.LoginErrorMessage);
         Validation = view.findViewById(R.id.LoginButton);
 
+        Email.setText("emeric.judith@esme.fr");
+        Password.setText("MDC_ESME_2022");
+
         Validation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,7 +111,6 @@ public class LoginFragment extends Fragment {
                     ErrorMessage.setText("Adresse email ou mot de passe incorrect.");
                 } else {
                     Intent intent = new Intent(getActivity(), MainActivity.class);
-                    DataFromAPI.setConnexionRest(connectionRest);
                     DataFromAPI.setToken(response);
                     startActivity(intent);
                     getActivity().finish();

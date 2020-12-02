@@ -2,11 +2,14 @@ package com.example.mangadigitalcollection.dataStorage;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 public class Reference {
     private int Id;
     private String Name;
     private String Original_Name;
     private String IllustrationLink;
+    private String Genre;
     private boolean IsManga;
     private int NbTomes;
     private int EditeurID;
@@ -15,21 +18,9 @@ public class Reference {
     private int NbEpisodesTotal;
     private int StudioID;
     private int LicenceID;
+    private boolean isSponsorised;
 
-    public Reference(int id, String name, String original_Name, String illustrationLink, boolean isManga, int nbTomes, int editeurID, boolean isAnime, int nbSaisons, int nbEpisodesTotal, int studioID, int licenceID) {
-        this.Id = id;
-        this.Name = name;
-        this.Original_Name = original_Name;
-        this.IllustrationLink = illustrationLink;
-        this.IsManga = isManga;
-        this.NbTomes = nbTomes;
-        this.EditeurID = editeurID;
-        this.IsAnime = isAnime;
-        this.NbSaisons = nbSaisons;
-        this.NbEpisodesTotal = nbEpisodesTotal;
-        this.StudioID = studioID;
-        this.LicenceID = licenceID;
-    }
+    private ArrayList<Commentaire> Commentaires;
 
     public Reference(JSONObject optJSONObject) {
         this.Id = optJSONObject.optInt("id");
@@ -37,6 +28,7 @@ public class Reference {
         this.Original_Name = optJSONObject.optString("original_name");
         this.IllustrationLink = optJSONObject.optString("illustrationlink");
         this.IsManga = optJSONObject.optBoolean("isManga");
+        this.Genre = optJSONObject.optString("genre");
 
         if(this.IsManga){
             this.NbTomes = optJSONObject.optInt("nbTomes");
@@ -50,7 +42,8 @@ public class Reference {
             this.StudioID = optJSONObject.optInt("studio");
         }
 
-        this.LicenceID = optJSONObject.optInt("licence_id");;
+        this.LicenceID = optJSONObject.optInt("licence_id");
+        this.isSponsorised = optJSONObject.optBoolean("isSponsorised");
     }
 
     public int getId() {
@@ -99,5 +92,29 @@ public class Reference {
 
     public int getLicenceID() {
         return LicenceID;
+    }
+
+    public String getGenre() {
+        return Genre;
+    }
+
+    public boolean isSponsorised() {
+        return isSponsorised;
+    }
+
+    public ArrayList<Commentaire> getCommentaires() {
+        return Commentaires;
+    }
+
+    public void setCommentaires(ArrayList<Commentaire> commentaires) {
+        Commentaires = commentaires;
+    }
+
+    public void addCommentaire(Commentaire commentaire){
+        this.Commentaires.add(commentaire);
+    }
+
+    public void remCommentaire(Commentaire commentaire){
+        this.Commentaires.remove(commentaire);
     }
 }

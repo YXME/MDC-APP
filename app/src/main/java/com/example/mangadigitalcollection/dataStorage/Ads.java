@@ -2,21 +2,21 @@ package com.example.mangadigitalcollection.dataStorage;
 
 import org.json.JSONObject;
 
-public class Studio {
+public class Ads {
 
     private int Id;
-    private String Name;
+    private String Url;
 
-    public Studio(JSONObject optJSONObject) {
+    public Ads(JSONObject optJSONObject) {
         this.Id = optJSONObject.optInt("id");
-        this.Name = optJSONObject.optString("name");
+        this.Url = optJSONObject.optString("url");
     }
 
     public int getId() {
         return Id;
     }
 
-    public String getName() {
-        return Name;
+    public String getUrl() {
+        return Url;
     }
 }
