@@ -65,14 +65,15 @@
 
         </androidx.viewpager.widget.ViewPager>
 
-        <fragment
-            android:id="@+id/fragment"
-            android:name="com.example.mangadigitalcollection.ui.BottomNavBar"
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
+            app:menu="@menu/bottom_navigation_menu"
+            android:layout_alignParentBottom="true"
             android:layout_marginBottom="0dp"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

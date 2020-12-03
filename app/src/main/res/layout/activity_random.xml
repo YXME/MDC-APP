@@ -28,7 +28,7 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="360dp"
-        android:layout_height="241dp"
+        android:layout_height="310dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,14 +36,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <SwitchCompat
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="@string/randomCatchphrase"
+            android:textAlignment="center"
+            android:textColor="#FFFF00"
+            android:textSize="20sp"/>
+
+        <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/switchManga"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
             android:text="@string/isMangaRandom" />
 
-        <SwitchCompat
+        <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/switchAnime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -51,11 +61,12 @@
             android:text="@string/isAnimeRandom" />
 
         <Spinner
-            android:id="@+id/spinner1"
+            android:id="@+id/spinnerGenre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
             android:background="@android:drawable/btn_dropdown"
+            android:entries="@array/genre"
             android:spinnerMode="dropdown" />
 
         <Button
@@ -64,6 +75,24 @@
             android:layout_height="wrap_content"
             android:text="@string/Randomize" />
 
+        <TextView
+            android:id="@+id/RandomErrorMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="#FF0000"
+            android:text="" />
+
     </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:menu="@menu/bottom_navigation_menu"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

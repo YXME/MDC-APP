@@ -44,4 +44,8 @@ public class User {
     public void setListes(ArrayList<Liste> listes) {
         Listes = listes;
     }
+
+    public String getPictureUrl() {
+        return PictureUrl;
+    }
 }

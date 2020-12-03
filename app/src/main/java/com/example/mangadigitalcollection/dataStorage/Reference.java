@@ -27,15 +27,27 @@ public class Reference {
         this.Name = optJSONObject.optString("name");
         this.Original_Name = optJSONObject.optString("original_name");
         this.IllustrationLink = optJSONObject.optString("illustrationlink");
-        this.IsManga = optJSONObject.optBoolean("isManga");
         this.Genre = optJSONObject.optString("genre");
+
+        if(optJSONObject.optInt("isManga") == 1){
+            this.IsManga = true;
+        }
+        else {
+            this.IsManga = false;
+        }
 
         if(this.IsManga){
             this.NbTomes = optJSONObject.optInt("nbTomes");
             this.EditeurID = optJSONObject.optInt("edition");;
         }
 
-        this.IsAnime = optJSONObject.optBoolean("isAnime");
+        if(optJSONObject.optInt("IsAnime") == 1){
+            this.IsAnime = true;
+        }
+        else {
+            this.IsAnime = false;
+        }
+
         if(this.IsAnime){
             this.NbSaisons = optJSONObject.optInt("nbSaisons");
             this.NbEpisodesTotal = optJSONObject.optInt("nbEpisodesTotal");

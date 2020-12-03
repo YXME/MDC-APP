@@ -27,9 +27,11 @@ import com.example.mangadigitalcollection.dataStorage.Ads;
 import com.example.mangadigitalcollection.dataStorage.Reference;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 
 public class NewFragment extends Fragment {
@@ -39,7 +41,7 @@ public class NewFragment extends Fragment {
     private TableLayout TableContainer;
     private String token;
 
-    private List<Reference> New;
+    private ArrayList<Reference> New = new ArrayList<>();
     private List<Ads> AdList;
 
     public NewFragment() {
@@ -69,7 +71,7 @@ public class NewFragment extends Fragment {
         TableContainer = view.findViewById(R.id.tableContainer);
 
         AdList = DataFromAPI.getAdsList();
-        New = DataFromAPI.getReferenceList();
+        New.addAll(DataFromAPI.getReferenceList());
         Collections.reverse(New);
 
 
@@ -95,7 +97,7 @@ public class NewFragment extends Fragment {
                         LinearLayout.LayoutParams.WRAP_CONTENT
                 );
 
-                Picasso.get().load(AdList.get(AdId.nextInt(3 - 1 + 1) + 1).getUrl()).resize(700, 1000).into(illustration);
+                Picasso.get().load(AdList.get(ThreadLocalRandom.current().nextInt(0, 3 + 1)).getUrl()).resize(700, 1000).into(illustration);
 
                 illustration.setLayoutParams(params);
                 illustration.getLayoutParams().width = 350;
@@ -120,8 +122,6 @@ public class NewFragment extends Fragment {
                 title.setTextAlignment(TextView.TEXT_ALIGNMENT_CENTER);
                 title.setText(New.get(i).getName());
                 title.setTextColor(Color.WHITE);
-                //title.setLayoutParams(params);
-//            title.getLayoutParams().width = 1000;
 
                 Picasso.get().load(New.get(i).getIllustrationLink()).resize(700, 1000).into(illustration);
 

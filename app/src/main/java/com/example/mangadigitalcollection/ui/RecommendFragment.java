@@ -25,9 +25,11 @@ import com.example.mangadigitalcollection.dataStorage.Ads;
 import com.example.mangadigitalcollection.dataStorage.Reference;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 
 public class RecommendFragment extends Fragment {
@@ -37,8 +39,8 @@ public class RecommendFragment extends Fragment {
     private TableLayout TableContainer;
     private String token;
 
-    private List<Reference> Recommended;
-    private List<Ads> AdList;
+    private ArrayList<Reference> Recommended = new ArrayList<>();
+    private ArrayList<Ads> AdList;
 
     public RecommendFragment() {
         // Required empty public constructor
@@ -66,8 +68,11 @@ public class RecommendFragment extends Fragment {
         DataFromAPI.FetchDataFromAPI();
         TableContainer = view.findViewById(R.id.tableContainer);
 
-        Recommended = DataFromAPI.getReferenceList();
-        Recommended.removeIf(a -> (a.isSponsorised()));
+        Recommended.addAll(DataFromAPI.getReferenceList());
+        for(int i = 0; i < Recommended.size(); i++){
+            if (!Recommended.get(i).isSponsorised()) Recommended.remove(i);
+        }
+
         AdList = DataFromAPI.getAdsList();
 
         int Max = 8;
@@ -92,7 +97,7 @@ public class RecommendFragment extends Fragment {
                         LinearLayout.LayoutParams.WRAP_CONTENT
                 );
 
-                Picasso.get().load(AdList.get(AdId.nextInt(3 - 1 + 1) + 1).getUrl()).resize(700, 1000).into(illustration);
+                Picasso.get().load(AdList.get(ThreadLocalRandom.current().nextInt(0, 3 + 1)).getUrl()).resize(700, 1000).into(illustration);
 
                 illustration.setLayoutParams(params);
                 illustration.getLayoutParams().width = 350;

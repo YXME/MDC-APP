@@ -21,6 +21,7 @@ import java.util.concurrent.ExecutionException;
 public class DataFromAPI {
 
     private static String token;
+    private static int CurrentUserID;
 
     private static ArrayList<User> UserList = new ArrayList<User>();
     private static ArrayList<Reference> ReferenceList = new ArrayList<Reference>();
@@ -277,7 +278,13 @@ public class DataFromAPI {
         return null;
     }
 
+    public static int getCurrentUserID() {
+        return CurrentUserID;
+    }
 
+    public static void setCurrentUserID(int currentUserID) {
+        CurrentUserID = currentUserID;
+    }
 
     public static String getToken() {
         return token;
@@ -287,7 +294,7 @@ public class DataFromAPI {
         DataFromAPI.token = token;
     }
 
-    public ArrayList<User> getUserList() {
+    public static ArrayList<User> getUserList() {
         return UserList;
     }
 
