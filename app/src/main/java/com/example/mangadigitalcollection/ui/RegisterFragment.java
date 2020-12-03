@@ -73,7 +73,14 @@ public class RegisterFragment extends Fragment {
 
                     if(token.charAt(0)=='{') {
                         Log.v("LoginActivity", token);
-                    }else {
+                    }
+                    else {
+                        ConnexionRest connexionRest = new ConnexionRest();
+                        connectionRest.setObj(jsonAuthentification);
+
+                        connectionRest.execute("POST");
+                        connectionRest.get();
+
                         Intent intent = new Intent(getActivity(), MainActivity.class);
                         DataFromAPI.setToken(token);
                         startActivity(intent);
@@ -89,5 +96,9 @@ public class RegisterFragment extends Fragment {
             }
         });
         return view;
+    }
+
+    public void SetUerInDatabase(){
+
     }
 }

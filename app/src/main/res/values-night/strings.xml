@@ -10,4 +10,7 @@
     <string name="pl_Logo">Logo</string>
     <string name="main_new">Nouveautés</string>
     <string name="main_recommended">Recommandés</string>
+    <string name="BottomBarRandom">Aléatoire</string>
+    <string name="BottomBarProfil">Profil</string>
+    <string name="BottomBarRecherche">Recherche</string>
 </resources>

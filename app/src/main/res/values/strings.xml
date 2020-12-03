@@ -9,6 +9,13 @@
     <string name="pl_Logo">Logo</string>
     <string name="main_new">Nouveautés</string>
     <string name="main_recommended">Recommandés</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="isMangaRandom">La référence est adapté en manga ?</string>
+    <string name="isAnimeRandom">La référence est adapté en animé ?</string>
+    <string name="Randomize">Tirer au sort</string>
+    <string name="BottomBarRandom">Aléatoire</string>
+    <string name="BottomBarProfil">Profil</string>
+    <string name="BottomBarRecherche">Recherche</string>
+    <string name="BottomBarAccueil">Accueil</string>
+
 </resources>
