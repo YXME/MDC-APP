@@ -152,6 +152,7 @@ public class NewFragment extends Fragment {
                     intent.putExtra("REFERENCE_ID", New.get(finalI).getId());
                     intent.putExtra("FROM", 1);
                     startActivity(intent);
+                    getActivity().finish();
                 });
             }
         }

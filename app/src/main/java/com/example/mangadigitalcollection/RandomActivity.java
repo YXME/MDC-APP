@@ -120,6 +120,7 @@ public class RandomActivity extends AppCompatActivity {
                     intent.putExtra("REFERENCE_ID", SelectedReferenceID);
                     intent.putExtra("FROM", 3);
                     startActivity(intent);
+                    RandomActivity.this.finish();
                 }
                 else {
                     ErrorMessage.setText("Aucune référence trouvée.");

@@ -152,6 +152,7 @@ public class RecommendFragment extends Fragment {
                     intent.putExtra("REFERENCE_ID", Recommended.get(finalI).getId());
                     intent.putExtra("FROM", 1);
                     startActivity(intent);
+                    getActivity().finish();
                 });
             }
         }

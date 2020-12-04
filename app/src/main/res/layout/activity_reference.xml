@@ -51,13 +51,14 @@
             android:layout_weight="1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/cover__1_" />
+            app:srcCompat="@drawable/cover__1_"
+            android:contentDescription="@string/referenceimage" />
 
         <TableLayout
             android:layout_width="324dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:paddingLeft="3dp">
+            android:paddingStart="3dp">
 
             <TableRow
                 android:layout_width="match_parent"
@@ -67,7 +68,8 @@
                     android:id="@+id/referenceName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/referenceName" />
+                    android:text="@string/referenceName"
+                    android:visibility="visible" />
             </TableRow>
 
             <TableRow

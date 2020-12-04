@@ -110,6 +110,7 @@ public class SearchActivity extends AppCompatActivity {
                                 intent.putExtra("REFERENCE_ID", ReferencesFromAPI.get(finalI).getId());
                                 intent.putExtra("FROM", 2);
                                 startActivity(intent);
+                                SearchActivity.this.finish();
                             }
                         });
                     }

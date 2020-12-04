@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -61,7 +62,6 @@ public class ReferenceActivity extends AppCompatActivity {
             NbEpisodesTotal.append("" + selectReference.getNbEpisodesTotal());
             Studio.append(DataFromAPI.getStudioList().get(selectReference.getStudioID() - 1).getName());
         }
-
 
 
 

@@ -35,4 +35,10 @@
     <string name="referenceNbSaisons">Nombre de saisons  : </string>
     <string name="referenceNbEpisodesTotal">Nombre d\'épisodes : </string>
     <string name="referenceStudio">Studio : </string>
+
+    <string name="commentaireCatchphrase">Hit that show with a comeback Senpai !</string>
+    <string name="commentaireHintText">Entrez votre commentaire....</string>
+    <string name="commentaireRating">Note :</string>
+    <string name="commentairePost">Poster</string>
+    <string name="referenceimage">ReferenceImage</string>
 </resources>
