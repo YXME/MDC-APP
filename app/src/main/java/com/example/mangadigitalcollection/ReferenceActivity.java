@@ -17,7 +17,7 @@ public class ReferenceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reference);
         int ReferenceId = getIntent().getIntExtra("REFERENCE_ID",0);
-        Reference selectReference = DataFromAPI.getReferenceList().get(ReferenceId);
+        Reference selectReference = DataFromAPI.getReferenceList().get(ReferenceId - 1);
 
 
         ImageView ReferenceImage = findViewById(R.id.referenceImage);
