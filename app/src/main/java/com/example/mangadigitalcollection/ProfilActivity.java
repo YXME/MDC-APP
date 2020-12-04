@@ -47,3 +47,6 @@ public class ProfilActivity extends AppCompatActivity {
         });
     }
 }
+
+// TODO : Ajouter aux dépendances pour les prochaines activités appelés depuis ici.
+//intent.putExtra("FROM", 4);

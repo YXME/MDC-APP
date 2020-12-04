@@ -118,6 +118,7 @@ public class RandomActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(getApplicationContext(), ReferenceActivity.class);
                     intent.putExtra("REFERENCE_ID", SelectedReferenceID);
+                    intent.putExtra("FROM", 3);
                     startActivity(intent);
                 }
                 else {

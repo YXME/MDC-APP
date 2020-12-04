@@ -25,5 +25,14 @@
     <string name="search">Rechercher</string>
     <string name="searchHint">Saisissez un nom</string>
 
+    <string name="referenceName">Nom : </string>
+    <string name="referenceOriginalName">Nom original : </string>
+    <string name="referenceGenre">Genre : </string>
 
+    <string name="referenceNbTome">Nombre de tomes : </string>
+    <string name="referenceEditeur">Editeur : </string>
+
+    <string name="referenceNbSaisons">Nombre de saisons  : </string>
+    <string name="referenceNbEpisodesTotal">Nombre d\'épisodes : </string>
+    <string name="referenceStudio">Studio : </string>
 </resources>

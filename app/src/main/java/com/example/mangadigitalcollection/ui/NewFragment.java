@@ -150,6 +150,7 @@ public class NewFragment extends Fragment {
                 row.setOnClickListener(v -> {
                     Intent intent = new Intent(getActivity(), ReferenceActivity.class);
                     intent.putExtra("REFERENCE_ID", New.get(finalI).getId());
+                    intent.putExtra("FROM", 1);
                     startActivity(intent);
                 });
             }

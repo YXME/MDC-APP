@@ -108,6 +108,7 @@ public class SearchActivity extends AppCompatActivity {
                             public void onClick(View v) {
                                 Intent intent = new Intent(getApplicationContext(), ReferenceActivity.class);
                                 intent.putExtra("REFERENCE_ID", ReferencesFromAPI.get(finalI).getId());
+                                intent.putExtra("FROM", 2);
                                 startActivity(intent);
                             }
                         });
