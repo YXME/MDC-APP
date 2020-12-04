@@ -40,14 +40,14 @@ public class ReferenceActivity extends AppCompatActivity {
 
 
         if (selectReference.isManga()){
-            Edition.setText(DataFromAPI.getEditeurList().get(selectReference.getEditeurID()).getName());
+            Edition.setText(DataFromAPI.getEditeurList().get(selectReference.getEditeurID() - 1).getName());
             NbTome.setText(selectReference.getNbTomes());
         }
 
         if (selectReference.isAnime()){
             NbSaisons.setText(selectReference.getNbSaisons());
             NbEpisodesTotal.setText(selectReference.getNbEpisodesTotal());
-            Studio.setText(DataFromAPI.getStudioList().get(selectReference.getStudioID()).getName());
+            Studio.setText(DataFromAPI.getStudioList().get(selectReference.getStudioID() - 1).getName());
         }
 
 
