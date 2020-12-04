@@ -8,6 +8,7 @@ import android.os.Bundle;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +22,7 @@ import android.widget.TextView;
 import com.example.mangadigitalcollection.DataFromAPI;
 import com.example.mangadigitalcollection.MainActivity;
 import com.example.mangadigitalcollection.R;
+import com.example.mangadigitalcollection.ReferenceActivity;
 import com.example.mangadigitalcollection.dataStorage.Ads;
 import com.example.mangadigitalcollection.dataStorage.Reference;
 import com.squareup.picasso.Picasso;
@@ -100,7 +102,7 @@ public class RecommendFragment extends Fragment {
                 Picasso.get().load(AdList.get(ThreadLocalRandom.current().nextInt(0, 3 + 1)).getUrl()).resize(700, 1000).into(illustration);
 
                 illustration.setLayoutParams(params);
-                illustration.getLayoutParams().width = 350;
+                illustration.getLayoutParams().width = 400;
                 illustration.getLayoutParams().height = 500;
 
                 layout.addView(illustration);
@@ -118,18 +120,27 @@ public class RecommendFragment extends Fragment {
                         LinearLayout.LayoutParams.WRAP_CONTENT
                 );
 
-                title.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
-                title.setTextAlignment(TextView.TEXT_ALIGNMENT_CENTER);
-                title.setText(Recommended.get(i).getName());
-                title.setTextColor(Color.WHITE);
-                //title.setLayoutParams(params);
-//            title.getLayoutParams().width = 1000;
+                LinearLayout.LayoutParams textParams = new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT
+                );
 
                 Picasso.get().load(Recommended.get(i).getIllustrationLink()).resize(700, 1000).into(illustration);
 
                 illustration.setLayoutParams(params);
-                illustration.getLayoutParams().width = 350;
+                illustration.getLayoutParams().width = 400;
                 illustration.getLayoutParams().height = 500;
+
+                title.setLayoutParams(textParams);
+                title.getLayoutParams().width = 680;
+                title.getLayoutParams().height = 500;
+                title.setPadding(25,0,50,0);
+                title.setGravity(Gravity.CENTER);
+                title.setTextAlignment(TextView.TEXT_ALIGNMENT_CENTER);
+                title.setMaxLines(2);
+                title.setEllipsize(TextUtils.TruncateAt.END);
+                title.setText(Recommended.get(i).getName());
+                title.setTextColor(Color.WHITE);
 
                 layout.addView(illustration);
                 layout.addView(title);
@@ -137,7 +148,7 @@ public class RecommendFragment extends Fragment {
                 TableContainer.addView(row);
                 int finalI = i;
                 row.setOnClickListener(v -> {
-                    Intent intent = new Intent(getActivity(), MainActivity.class);
+                    Intent intent = new Intent(getActivity(), ReferenceActivity.class);
                     intent.putExtra("REFERENCE_ID", Recommended.get(finalI).getId());
                     startActivity(intent);
                 });

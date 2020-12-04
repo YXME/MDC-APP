@@ -21,5 +21,9 @@
     <string name="BottomBarRecherche">Recherche</string>
     <string name="BottomBarAccueil">Accueil</string>
 
+    <string name="searchCatchphrase">You\'re going to find the One Piece !</string>
+    <string name="search">Rechercher</string>
+    <string name="searchHint">Saisissez un nom</string>
+
 
 </resources>
