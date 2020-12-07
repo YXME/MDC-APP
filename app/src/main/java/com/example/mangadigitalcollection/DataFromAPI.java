@@ -1,7 +1,6 @@
 package com.example.mangadigitalcollection;
 
 import android.os.Build;
-import android.widget.EditText;
 
 import androidx.annotation.RequiresApi;
 
@@ -63,14 +62,8 @@ public class DataFromAPI {
                 ReferenceList = ArrayCreation.MakeReferenceList(listJsonObjs);
             }
         }
-        catch (InterruptedException e)
+        catch (InterruptedException | ExecutionException | JSONException e)
         {
-            e.printStackTrace();
-        }
-        catch (ExecutionException e)
-        {
-            e.printStackTrace();
-        } catch (JSONException e) {
             e.printStackTrace();
         }
     }
@@ -88,14 +81,8 @@ public class DataFromAPI {
                 UserList = ArrayCreation.MakeUserList(listJsonObjs);
             }
         }
-        catch (InterruptedException e)
+        catch (InterruptedException | ExecutionException | JSONException e)
         {
-            e.printStackTrace();
-        }
-        catch (ExecutionException e)
-        {
-            e.printStackTrace();
-        } catch (JSONException e) {
             e.printStackTrace();
         }
     }
@@ -113,14 +100,8 @@ public class DataFromAPI {
                 LicenceList = ArrayCreation.MakeLicenceList(listJsonObjs);
             }
         }
-        catch (InterruptedException e)
+        catch (InterruptedException | ExecutionException | JSONException e)
         {
-            e.printStackTrace();
-        }
-        catch (ExecutionException e)
-        {
-            e.printStackTrace();
-        } catch (JSONException e) {
             e.printStackTrace();
         }
     }
@@ -138,14 +119,8 @@ public class DataFromAPI {
                 StudioList = ArrayCreation.MakeStudioList(listJsonObjs);
             }
         }
-        catch (InterruptedException e)
+        catch (InterruptedException | ExecutionException | JSONException e)
         {
-            e.printStackTrace();
-        }
-        catch (ExecutionException e)
-        {
-            e.printStackTrace();
-        } catch (JSONException e) {
             e.printStackTrace();
         }
     }
@@ -163,14 +138,8 @@ public class DataFromAPI {
                 EditeurList = ArrayCreation.MakeEditeurList(listJsonObjs);
             }
         }
-        catch (InterruptedException e)
+        catch (InterruptedException | ExecutionException | JSONException e)
         {
-            e.printStackTrace();
-        }
-        catch (ExecutionException e)
-        {
-            e.printStackTrace();
-        } catch (JSONException e) {
             e.printStackTrace();
         }
     }
@@ -188,14 +157,8 @@ public class DataFromAPI {
                 AdsList = ArrayCreation.MakeAdsList(listJsonObjs);
             }
         }
-        catch (InterruptedException e)
+        catch (InterruptedException | ExecutionException | JSONException e)
         {
-            e.printStackTrace();
-        }
-        catch (ExecutionException e)
-        {
-            e.printStackTrace();
-        } catch (JSONException e) {
             e.printStackTrace();
         }
     }
@@ -224,14 +187,8 @@ public class DataFromAPI {
                 }
             }
         }
-        catch (InterruptedException e)
+        catch (InterruptedException | ExecutionException | JSONException e)
         {
-            e.printStackTrace();
-        }
-        catch (ExecutionException e)
-        {
-            e.printStackTrace();
-        } catch (JSONException e) {
             e.printStackTrace();
         }
     }
@@ -251,14 +208,8 @@ public class DataFromAPI {
                 ListesList = ArrayCreation.MakeListesList(ListHeader,ListData);
             }
         }
-        catch (InterruptedException e)
+        catch (InterruptedException | ExecutionException | JSONException e)
         {
-            e.printStackTrace();
-        }
-        catch (ExecutionException e)
-        {
-            e.printStackTrace();
-        } catch (JSONException e) {
             e.printStackTrace();
         }
     }
@@ -274,9 +225,9 @@ public class DataFromAPI {
             if (ListData != null) {
                 return ListData;
             }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
+        }
+        catch (InterruptedException | ExecutionException e)
+        {
             e.printStackTrace();
         }
         return null;
