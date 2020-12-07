@@ -21,6 +21,7 @@ public class SplashScreen extends AppCompatActivity {
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         setContentView(R.layout.activity_splash_screen);
+
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) actionBar.hide();
 

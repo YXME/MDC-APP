@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MangaDigitalCollection"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ArrayCreation$CommentaireActivity"></activity>
+        <activity android:name=".ListeActivity"></activity>
+        <activity android:name=".CommentaireActivity" />
         <activity android:name=".ReferenceActivity" />
         <activity android:name=".SearchActivity" />
         <activity android:name=".RandomActivity" />

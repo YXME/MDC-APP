@@ -41,4 +41,9 @@
     <string name="commentaireRating">Note :</string>
     <string name="commentairePost">Poster</string>
     <string name="referenceimage">ReferenceImage</string>
+    <string name="disconnect">Déconnexion</string>
+    <string name="themeSwitcher">Changer le thème</string>
+    <string name="createList">Créer une liste</string>
+    <string name="addToList">Ajouter à la liste</string>
+    <string name="listes">LISTES</string>
 </resources>

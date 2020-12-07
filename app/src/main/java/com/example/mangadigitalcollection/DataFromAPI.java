@@ -1,6 +1,7 @@
 package com.example.mangadigitalcollection;
 
 import android.os.Build;
+import android.widget.EditText;
 
 import androidx.annotation.RequiresApi;
 
@@ -36,6 +37,9 @@ public class DataFromAPI {
     @RequiresApi(api = Build.VERSION_CODES.N)
     public static void FetchDataFromAPI()
     {
+        //TODO : Remplacer par la valeur récupéré sur l'API à l'authentification.
+        CurrentUserID = 1;
+        //////////////////
         FetchReferenceFromAPI();
         FetchUserFromAPI();
         FetchLicenceFromAPI();
@@ -324,5 +328,18 @@ public class DataFromAPI {
 
     public static ArrayList<Ads> getAdsList() {
         return AdsList;
+    }
+
+    public static void reset() {
+        token = null;
+        CurrentUserID = -1;
+        UserList.clear();
+        ReferenceList.clear();
+        LicenceList.clear();
+        StudioList.clear();
+        EditeurList.clear();
+        CommentairesList.clear();
+        ListesList.clear();
+        AdsList.clear();
     }
 }

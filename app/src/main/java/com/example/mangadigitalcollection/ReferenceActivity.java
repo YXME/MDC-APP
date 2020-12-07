@@ -104,7 +104,7 @@ public class ReferenceActivity extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.action_profil:
-                        startActivity(new Intent(getApplicationContext(), ProfilActivity.class));
+                        startActivity(new Intent(getApplicationContext(), ProfilActivity.class).putExtra("USER_ID", DataFromAPI.getCurrentUserID()));
                         overridePendingTransition(0,0);
                         return true;
                 }

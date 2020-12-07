@@ -21,7 +21,7 @@ public class User {
     public User(JSONObject optJSONObject) {
         this.Id = optJSONObject.optInt("id");
         this.Username = optJSONObject.optString("username");
-        this.PictureUrl = optJSONObject.optString("picture_url");
+        this.PictureUrl = optJSONObject.optString("profile_pic_url");
         this.Biographie = optJSONObject.optString("biographie");
     }
 

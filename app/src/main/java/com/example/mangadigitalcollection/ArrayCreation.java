@@ -97,7 +97,7 @@ public class ArrayCreation {
 
             final ArrayList<Reference> FinalReferenceList = new ArrayList<>();
             ReferenceList.forEach((a) -> {
-                if (!ReferenceIds.contains(a.getId())){
+                if (ReferenceIds.contains(a.getId())){
                     FinalReferenceList.add(a);
                 }
             });

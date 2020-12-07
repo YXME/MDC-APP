@@ -7,11 +7,13 @@ import java.util.ArrayList;
 public class Liste {
     private int Id;
     private String Name;
+    public int UserId;
     private ArrayList<Reference> ListContent;
 
     public Liste(JSONObject optJSONObject) {
         this.Id = optJSONObject.optInt("id");
         this.Name = optJSONObject.optString("name");
+        this.UserId = optJSONObject.optInt("userId");
     }
 
     public int getId() {
@@ -22,6 +24,8 @@ public class Liste {
         return Name;
     }
 
+    public int getUserId() { return UserId; }
+
     public ArrayList<Reference> getListContent() {
         return ListContent;
     }
@@ -29,4 +33,6 @@ public class Liste {
     public void setListContent(ArrayList<Reference> listContent) {
         ListContent = listContent;
     }
+
+
 }
