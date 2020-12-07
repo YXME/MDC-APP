@@ -20,7 +20,7 @@ public class Reference {
     private int LicenceID;
     private boolean isSponsorised;
 
-    private ArrayList<Commentaire> Commentaires;
+    private ArrayList<Commentaire> Commentaires = new ArrayList<>();
 
     public Reference(JSONObject optJSONObject) {
         this.Id = optJSONObject.optInt("id");

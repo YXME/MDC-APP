@@ -46,4 +46,5 @@
     <string name="createList">Créer une liste</string>
     <string name="addToList">Ajouter à la liste</string>
     <string name="listes">LISTES</string>
+    <string name="addComment">Ajouter un commentaire</string>
 </resources>

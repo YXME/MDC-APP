@@ -155,24 +155,27 @@
                     </TableRow>
 
                 </TableLayout>
-
             </LinearLayout>
 
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_margin="10dp"
+                android:id="@+id/referenceCommentaireContainer">
+
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <Button
-                        android:id="@+id/button"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/addCommentButton"
+                        android:layout_width="423dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="Ajouter un commentaire" />
+                        android:text="@string/addComment" />
                 </TableRow>
+
             </TableLayout>
 
             <HorizontalScrollView

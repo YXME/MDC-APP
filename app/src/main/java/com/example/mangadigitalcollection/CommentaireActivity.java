@@ -12,6 +12,7 @@ import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -33,6 +34,9 @@ public class CommentaireActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_commentaire);
 
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) actionBar.hide();
+
         PostAction = findViewById(R.id.Post);
         CommentaireText = findViewById(R.id.CommentText);
         Note = findViewById(R.id.spinnerRating);
@@ -47,7 +51,7 @@ public class CommentaireActivity extends AppCompatActivity {
                         JSONObject jsonData = new JSONObject();
                         jsonData.put("reference_id", getIntent().getIntExtra("REFERENCE_ID",0));
                         jsonData.put("user_id", DataFromAPI.getCurrentUserID());
-                        jsonData.put("note", (int)Note.getSelectedItem());
+                        jsonData.put("note", Note.getSelectedItem());
                         jsonData.put("commentaire", CommentaireText.getText());
                         connectionRest.setObj(jsonData);
                         connectionRest.setAction("Commentaire");

@@ -12,10 +12,10 @@ public class Commentaire {
 
     public Commentaire(JSONObject optJSONObject) {
         this.Id = optJSONObject.optInt("id");
-        this.UserId = optJSONObject.optInt("UserId");
-        this.ReferenceId = optJSONObject.optInt("ReferenceId");
-        this.Note = optJSONObject.optInt("ReferenceId");
-        this.Avis = optJSONObject.optString("name");
+        this.UserId = optJSONObject.optInt("user_id");
+        this.ReferenceId = optJSONObject.optInt("reference_id");
+        this.Note = optJSONObject.optInt("note");
+        this.Avis = optJSONObject.optString("commentaire");
     }
 
     public int getId() {
