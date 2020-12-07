@@ -4,13 +4,19 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.example.mangadigitalcollection.dataStorage.Commentaire;
 import com.example.mangadigitalcollection.dataStorage.Editeur;
 import com.example.mangadigitalcollection.dataStorage.Reference;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -32,6 +38,11 @@ public class ReferenceActivity extends AppCompatActivity {
         int ReferenceId = getIntent().getIntExtra("REFERENCE_ID",0);
         Reference selectReference = DataFromAPI.getReferenceList().get(ReferenceId - 1);
 
+        TableRow TabNbTome = findViewById(R.id.tabNbTome);
+        TableRow TabEdition = findViewById(R.id.tabEdition);
+        TableRow TabNbSaisons = findViewById(R.id.tabNbSaisons);
+        TableRow TabEpisodeTotal = findViewById(R.id.tabNbEpisodeTotal);
+        TableRow TabStudio = findViewById(R.id.tabStudio);
 
         ImageView ReferenceImage = findViewById(R.id.referenceImage);
         TextView ReferenceName = findViewById(R.id.referenceName);
@@ -53,17 +64,37 @@ public class ReferenceActivity extends AppCompatActivity {
         Genre.append(genre);
 
         if (selectReference.isManga()){
+            TabNbTome.setVisibility(View.VISIBLE);
+            TabEdition.setVisibility(View.VISIBLE);
+
+        if (selectReference.isManga()){
             Edition.append(DataFromAPI.getEditeurList().get(selectReference.getEditeurID() - 1).getName());
             NbTome.append("" + selectReference.getNbTomes());
         }
 
         if (selectReference.isAnime()){
+            TabNbSaisons.setVisibility(View.VISIBLE);
+            TabEpisodeTotal.setVisibility(View.VISIBLE);
+            TabStudio.setVisibility(View.VISIBLE);
             NbSaisons.append("" + selectReference.getNbSaisons());
             NbEpisodesTotal.append("" + selectReference.getNbEpisodesTotal());
             Studio.append(DataFromAPI.getStudioList().get(selectReference.getStudioID() - 1).getName());
         }
 
+        Spinner spinner = findViewById(R.id.spinner);
 
+       /* selectReference.getLicenceID() // si c'est égal à une valeur recupérer toute les illustrations liée à la ref*/
+        Button button = findViewById(R.id.button);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent packageContext;
+                Intent intent = new Intent (packageContext: this, Commentaire.class);
+                startActivity(intent);
+            }
+        });
 
 
 
@@ -104,7 +135,7 @@ public class ReferenceActivity extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.action_profil:
-                        startActivity(new Intent(getApplicationContext(), ProfilActivity.class).putExtra("USER_ID", DataFromAPI.getCurrentUserID()));
+                        startActivity(new Intent(getApplicationContext(), ProfilActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                 }

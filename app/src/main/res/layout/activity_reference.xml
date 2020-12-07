@@ -61,7 +61,8 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:visibility="visible">
 
                 <TextView
                     android:id="@+id/referenceName"
@@ -94,8 +95,10 @@
             </TableRow>
 
             <TableRow
+                android:id="@+id/tabNbTome"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/nbTome"
@@ -105,8 +108,10 @@
             </TableRow>
 
             <TableRow
+                android:id="@+id/tabEdition"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/edition"
@@ -116,8 +121,10 @@
             </TableRow>
 
             <TableRow
+                android:id="@+id/tabNbSaisons"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/nbSaisons"
@@ -128,8 +135,10 @@
             </TableRow>
 
             <TableRow
+                android:id="@+id/tabNbEpisodeTotal"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/nbEpisodeTotal"
@@ -139,8 +148,10 @@
             </TableRow>
 
             <TableRow
+                android:id="@+id/tabStudio"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/studio"
@@ -148,8 +159,78 @@
                     android:layout_height="wrap_content"
                     android:text="@string/referenceStudio" />
             </TableRow>
+
         </TableLayout>
+
     </LinearLayout>
+
+    <TableLayout
+        android:layout_width="407dp"
+        android:layout_height="394dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="2dp"
+        tools:layout_editor_absoluteY="278dp">
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ajouter un commentaire" />
+
+        </TableRow>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="121dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/cover__1_" />
+
+                <ImageView
+                    android:id="@+id/imageView7"
+                    android:layout_width="121dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/cover__1_" />
+
+                <ImageView
+                    android:id="@+id/imageView8"
+                    android:layout_width="121dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/cover__1_" />
+
+                <ImageView
+                    android:id="@+id/imageView9"
+                    android:layout_width="121dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/cover__1_" />
+
+                <ImageView
+                    android:id="@+id/imageView10"
+                    android:layout_width="121dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/cover__1_" />
+
+            </LinearLayout>
+        </HorizontalScrollView>
+    </TableLayout>
 
     <!--<LinearLayout
         android:layout_width="410dp"
