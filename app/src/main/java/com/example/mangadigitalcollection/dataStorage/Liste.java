@@ -5,9 +5,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class Liste {
-    private int Id;
-    private String Name;
-    public int UserId;
+    private final int Id;
+    private final String Name;
+    private final int UserId;
     private ArrayList<Reference> ListContent;
 
     public Liste(JSONObject optJSONObject) {

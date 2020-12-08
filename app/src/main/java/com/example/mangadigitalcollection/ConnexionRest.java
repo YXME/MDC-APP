@@ -25,9 +25,7 @@ public class ConnexionRest extends AsyncTask <String, Void, String>  {
     protected String doInBackground(String... strings) {
         try {
             return get(strings[0]);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
+        } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
         return null;

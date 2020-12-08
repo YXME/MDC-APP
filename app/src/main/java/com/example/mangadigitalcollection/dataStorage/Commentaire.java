@@ -4,11 +4,11 @@ import org.json.JSONObject;
 
 public class Commentaire {
 
-    private int Id;
-    private int UserId;
-    private int ReferenceId;
-    private int Note;
-    private String Avis;
+    private final int Id;
+    private final int UserId;
+    private final int ReferenceId;
+    private final int Note;
+    private final String Avis;
 
     public Commentaire(JSONObject optJSONObject) {
         this.Id = optJSONObject.optInt("id");

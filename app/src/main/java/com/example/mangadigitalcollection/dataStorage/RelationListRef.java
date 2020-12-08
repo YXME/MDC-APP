@@ -3,9 +3,9 @@ package com.example.mangadigitalcollection.dataStorage;
 import org.json.JSONObject;
 
 public class RelationListRef {
-    private int Id;
-    private int ListeId;
-    private int ReferenceId;
+    private final int Id;
+    private final int ListeId;
+    private final int ReferenceId;
 
     public RelationListRef(JSONObject optJSONObject) {
         this.Id = optJSONObject.optInt("id");

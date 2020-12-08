@@ -1,41 +1,25 @@
 package com.example.mangadigitalcollection;
 
-import androidx.annotation.NonNull;
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.os.Build;
+import android.os.Bundle;
+
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
-
-import android.os.Build;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.TextView;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayoutMediator;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.sql.Ref;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 
 public class MainActivity extends AppCompatActivity {
 
     private ViewPager TabsContainer;
     private TabLayout TabSelector;
-    private BottomNavigationView bottomNavigationView;
 
+    @SuppressLint("NonConstantResourceId")
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) actionBar.hide();
 
-        bottomNavigationView = findViewById(R.id.bottomNavBar);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavBar);
 
         bottomNavigationView.setSelectedItemId(R.id.action_accueil);
         TabSelector = findViewById(R.id.tabLayout);
@@ -89,25 +73,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.action_recherche:
-                            startActivity(new Intent(getApplicationContext(), SearchActivity.class));
-                            overridePendingTransition(0,0);
-                            return true;
-                    case R.id.action_random:
-                        startActivity(new Intent(getApplicationContext(), RandomActivity.class));
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.action_recherche:
+                        startActivity(new Intent(getApplicationContext(), SearchActivity.class));
                         overridePendingTransition(0,0);
                         return true;
-                    case R.id.action_profil:
-                        startActivity(new Intent(getApplicationContext(), ProfilActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                }
-                return false;
+                case R.id.action_random:
+                    startActivity(new Intent(getApplicationContext(), RandomActivity.class));
+                    overridePendingTransition(0,0);
+                    return true;
+                case R.id.action_profil:
+                    startActivity(new Intent(getApplicationContext(), ProfilActivity.class));
+                    overridePendingTransition(0,0);
+                    return true;
             }
+            return false;
         });
 
     }

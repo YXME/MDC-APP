@@ -3,8 +3,8 @@ package com.example.mangadigitalcollection.dataStorage;
 import org.json.JSONObject;
 
 public class Licence {
-    private int Id;
-    private String Name;
+    private final int Id;
+    private final String Name;
 
     public Licence(JSONObject optJSONObject) {
         this.Id = optJSONObject.optInt("id");

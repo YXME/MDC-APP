@@ -1,15 +1,9 @@
 package com.example.mangadigitalcollection.ui;
 
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-
-import androidx.annotation.RequiresApi;
-import androidx.fragment.app.Fragment;
-
-import android.provider.CalendarContract;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -21,8 +15,10 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
+import androidx.fragment.app.Fragment;
+
 import com.example.mangadigitalcollection.DataFromAPI;
-import com.example.mangadigitalcollection.MainActivity;
 import com.example.mangadigitalcollection.R;
 import com.example.mangadigitalcollection.ReferenceActivity;
 import com.example.mangadigitalcollection.dataStorage.Ads;
@@ -32,28 +28,16 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
+import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
 
 
 public class NewFragment extends Fragment {
 
-    private View view;
-
-    private TableLayout TableContainer;
-    private String token;
-
-    private ArrayList<Reference> New = new ArrayList<>();
-    private List<Ads> AdList;
+    private final ArrayList<Reference> New = new ArrayList<>();
 
     public NewFragment() {
         // Required empty public constructor
-    }
-
-    public static NewFragment newInstance() {
-        NewFragment fragment = new NewFragment();
-
-        return fragment;
     }
 
     @Override
@@ -66,13 +50,12 @@ public class NewFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_new, container, false);
-        token = getActivity().getIntent().getStringExtra("TOKEN");
+        View view = inflater.inflate(R.layout.fragment_new, container, false);
 
         DataFromAPI.FetchDataFromAPI();
-        TableContainer = view.findViewById(R.id.tableContainer);
+        TableLayout tableContainer = view.findViewById(R.id.tableContainer);
 
-        AdList = DataFromAPI.getAdsList();
+        List<Ads> adList = DataFromAPI.getAdsList();
         New.addAll(DataFromAPI.getReferenceList());
         Collections.reverse(New);
 
@@ -89,8 +72,6 @@ public class NewFragment extends Fragment {
             ImageView illustration = new ImageView(getActivity());
 
             if(i == 2 || i == 5){
-                Random AdId = new Random();
-
                 row.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT));
                 layout.setOrientation(LinearLayout.HORIZONTAL);
 
@@ -99,7 +80,7 @@ public class NewFragment extends Fragment {
                         LinearLayout.LayoutParams.WRAP_CONTENT
                 );
 
-                Picasso.get().load(AdList.get(ThreadLocalRandom.current().nextInt(0, 3 + 1)).getUrl()).resize(700, 1000).into(illustration);
+                Picasso.get().load(adList.get(ThreadLocalRandom.current().nextInt(0, 3 + 1)).getUrl()).resize(700, 1000).into(illustration);
 
                 illustration.setLayoutParams(params);
                 illustration.getLayoutParams().width = 400;
@@ -107,7 +88,7 @@ public class NewFragment extends Fragment {
 
                 layout.addView(illustration);
                 row.addView(layout);
-                TableContainer.addView(row);
+                tableContainer.addView(row);
             }
             else {
                 TextView title = new TextView(getActivity());
@@ -145,14 +126,13 @@ public class NewFragment extends Fragment {
                 layout.addView(illustration);
                 layout.addView(title);
                 row.addView(layout);
-                TableContainer.addView(row);
+                tableContainer.addView(row);
                 int finalI = i;
                 row.setOnClickListener(v -> {
                     Intent intent = new Intent(getActivity(), ReferenceActivity.class);
                     intent.putExtra("REFERENCE_ID", New.get(finalI).getId());
                     intent.putExtra("FROM", 1);
                     startActivity(intent);
-                    getActivity().finish();
                 });
             }
         }

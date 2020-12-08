@@ -23,13 +23,13 @@ public class DataFromAPI {
     private static String token;
     private static String CurrentUserID;
 
-    private static ArrayList<User> UserList = new ArrayList<User>();
-    private static ArrayList<Reference> ReferenceList = new ArrayList<Reference>();
-    private static ArrayList<Licence> LicenceList = new ArrayList<Licence>();
-    private static ArrayList<Studio> StudioList = new ArrayList<Studio>();
-    private static ArrayList<Editeur> EditeurList = new ArrayList<Editeur>();
-    private static ArrayList<Commentaire> CommentairesList = new ArrayList<Commentaire>();
-    private static ArrayList<Liste> ListesList = new ArrayList<Liste>();
+    private static ArrayList<User> UserList = new ArrayList<>();
+    private static ArrayList<Reference> ReferenceList = new ArrayList<>();
+    private static ArrayList<Licence> LicenceList = new ArrayList<>();
+    private static ArrayList<Studio> StudioList = new ArrayList<>();
+    private static ArrayList<Editeur> EditeurList = new ArrayList<>();
+    private static ArrayList<Commentaire> CommentairesList = new ArrayList<>();
+    private static ArrayList<Liste> ListesList = new ArrayList<>();
     private static ArrayList<Ads> AdsList = new ArrayList<>();
 
 
@@ -193,7 +193,6 @@ public class DataFromAPI {
     @RequiresApi(api = Build.VERSION_CODES.N)
     public static void FetchListesFromAPI(){
         try {
-            String listJsonObjs;
             ConnexionRest connexionRest = new ConnexionRest();
             connexionRest.setToken(token);
             connexionRest.setAction("Listes");
@@ -254,20 +253,12 @@ public class DataFromAPI {
         return ReferenceList;
     }
 
-    public static ArrayList<Licence> getLicenceList() {
-        return LicenceList;
-    }
-
     public static ArrayList<Studio> getStudioList() {
         return StudioList;
     }
 
     public static ArrayList<Editeur> getEditeurList() {
         return EditeurList;
-    }
-
-    public static ArrayList<Commentaire> getCommentairesList() {
-        return CommentairesList;
     }
 
     public static ArrayList<Liste> getListesList() {

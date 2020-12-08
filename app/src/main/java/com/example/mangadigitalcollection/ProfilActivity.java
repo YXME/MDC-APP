@@ -1,25 +1,14 @@
 package com.example.mangadigitalcollection;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
-
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.app.Application;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.Layout;
 import android.text.TextUtils;
 import android.view.Gravity;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -27,6 +16,10 @@ import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mangadigitalcollection.dataStorage.Liste;
 import com.example.mangadigitalcollection.dataStorage.User;
@@ -42,8 +35,11 @@ public class ProfilActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
 
-    TableRow ThemeButtonContainer, UsernameContainer, BioContainer;
-    Button ThemeButton, DisconnectButton, CreateList;
+    //Button ThemeButton;
+    //TableRow ThemeButtonContainer;
+
+    TableRow UsernameContainer, BioContainer;
+    Button DisconnectButton, CreateList;
     TextView Pseudonyme, Biographie;
     User ThisUser;
 
@@ -53,6 +49,7 @@ public class ProfilActivity extends AppCompatActivity {
 
     ArrayList<Liste> UserListes = new ArrayList<>();
 
+    @SuppressLint({"NonConstantResourceId", "SetTextI18n"})
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,36 +133,30 @@ public class ProfilActivity extends AppCompatActivity {
                     DeleteButton.setTextColor(Color.WHITE);
 
                     int finalI = i;
-                    DeleteButton.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            try {
-                                ConnexionRest connexionRest = new ConnexionRest();
-                                JSONObject DataToDelete = new JSONObject();
-                                DataToDelete.put("id", UserListes.get(finalI).getId());
-                                connexionRest.setObj(DataToDelete);
-                                connexionRest.setToken(DataFromAPI.getToken());
-                                connexionRest.setAction("Listes");
-                                connexionRest.execute("DELETE");
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-
-                            DataFromAPI.getListesList().remove(UserListes.get(finalI));
-                            UserListes.remove(UserListes.get(finalI));
-
-                            ProfilActivity.this.recreate();
+                    DeleteButton.setOnClickListener(v -> {
+                        try {
+                            ConnexionRest connexionRest = new ConnexionRest();
+                            JSONObject DataToDelete = new JSONObject();
+                            DataToDelete.put("id", UserListes.get(finalI).getId());
+                            connexionRest.setObj(DataToDelete);
+                            connexionRest.setToken(DataFromAPI.getToken());
+                            connexionRest.setAction("Listes");
+                            connexionRest.execute("DELETE");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
+
+                        DataFromAPI.getListesList().remove(UserListes.get(finalI));
+                        UserListes.remove(UserListes.get(finalI));
+
+                        ProfilActivity.this.recreate();
                     });
 
-                    row.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Intent intent = new Intent(getApplicationContext(), ListeActivity.class);
-                            intent.putExtra("SELECTED_LISTE", UserListes.get(finalI).getId());
-                            intent.putExtra("FROM", 4);
-                            startActivity(intent);
-                        }
+                    row.setOnClickListener(v -> {
+                        Intent intent = new Intent(getApplicationContext(), ListeActivity.class);
+                        intent.putExtra("SELECTED_LISTE", UserListes.get(finalI).getId());
+                        intent.putExtra("FROM", 4);
+                        startActivity(intent);
                     });
 
                     layout.addView(title);
@@ -200,29 +191,27 @@ public class ProfilActivity extends AppCompatActivity {
                         .setTitle("Nommez votre nouvelle liste : ")
                         .setMessage("Maybe it will be JoJo... or JoJo... or JoJo... or Jojo...")
                         .setView(input)
-                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                if(input.getText() == null){
-                                    return;
-                                }
-                                ConnexionRest connexionRest = new ConnexionRest();
-                                JSONObject DataToAdd = new JSONObject();
-                                try {
-                                    DataToAdd.put("name", input.getText());
-                                    DataToAdd.put("userId", finalUserIdProfile);
-                                    connexionRest.setObj(DataToAdd);
-                                    connexionRest.setToken(DataFromAPI.getToken());
-                                    connexionRest.setAction("Listes");
-                                    connexionRest.execute("POST");
-                                    DataFromAPI.FetchDataFromAPI();
+                        .setPositiveButton(android.R.string.yes, (dialog, which) -> {
+                            if(input.getText() == null){
+                                return;
+                            }
+                            ConnexionRest connexionRest = new ConnexionRest();
+                            JSONObject DataToAdd = new JSONObject();
+                            try {
+                                DataToAdd.put("name", input.getText());
+                                DataToAdd.put("userId", finalUserIdProfile);
+                                connexionRest.setObj(DataToAdd);
+                                connexionRest.setToken(DataFromAPI.getToken());
+                                connexionRest.setAction("Listes");
+                                connexionRest.execute("POST");
+                                DataFromAPI.FetchDataFromAPI();
 
-                                    Intent intent = new Intent(getApplicationContext(), ListeActivity.class);
-                                    intent.putExtra("SELECTED_LISTE", DataFromAPI.getListesList().size());
-                                    intent.putExtra("FROM", 4);
-                                    startActivity(intent);
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
+                                Intent intent = new Intent(getApplicationContext(), ListeActivity.class);
+                                intent.putExtra("SELECTED_LISTE", DataFromAPI.getListesList().size());
+                                intent.putExtra("FROM", 4);
+                                startActivity(intent);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
                             }
                         })
                         .setNegativeButton("Annuler", null)
@@ -261,14 +250,11 @@ public class ProfilActivity extends AppCompatActivity {
                     UserListesContainer.addView(row);
 
                     int finalI = i;
-                    row.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Intent intent = new Intent(getApplicationContext(), ListeActivity.class);
-                            intent.putExtra("SELECTED_LISTE", UserListes.get(finalI).getId());
-                            intent.putExtra("FROM", 4);
-                            startActivity(intent);
-                        }
+                    row.setOnClickListener(v -> {
+                        Intent intent = new Intent(getApplicationContext(), ListeActivity.class);
+                        intent.putExtra("SELECTED_LISTE", UserListes.get(finalI).getId());
+                        intent.putExtra("FROM", 4);
+                        startActivity(intent);
                     });
                 }
         }
@@ -276,25 +262,22 @@ public class ProfilActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottomNavBar);
         bottomNavigationView.setSelectedItemId(R.id.action_profil);
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.action_accueil:
-                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                    case R.id.action_recherche:
-                        startActivity(new Intent(getApplicationContext(), SearchActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                    case R.id.action_random:
-                        startActivity(new Intent(getApplicationContext(), RandomActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                }
-                return false;
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.action_accueil:
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    overridePendingTransition(0,0);
+                    return true;
+                case R.id.action_recherche:
+                    startActivity(new Intent(getApplicationContext(), SearchActivity.class));
+                    overridePendingTransition(0,0);
+                    return true;
+                case R.id.action_random:
+                    startActivity(new Intent(getApplicationContext(), RandomActivity.class));
+                    overridePendingTransition(0,0);
+                    return true;
             }
+            return false;
         });
     }
 }

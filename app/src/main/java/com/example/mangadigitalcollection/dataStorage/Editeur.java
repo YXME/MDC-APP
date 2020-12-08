@@ -4,8 +4,8 @@ import org.json.JSONObject;
 
 public class Editeur {
 
-    private int Id;
-    private String Name;
+    private final int Id;
+    private final String Name;
 
     public Editeur(JSONObject optJSONObject) {
         this.Id = optJSONObject.optInt("id");

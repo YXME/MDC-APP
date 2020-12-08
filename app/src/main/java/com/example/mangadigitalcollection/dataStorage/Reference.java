@@ -5,22 +5,22 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class Reference {
-    private int Id;
-    private String Name;
-    private String Original_Name;
-    private String IllustrationLink;
-    private String Genre;
-    private boolean IsManga;
+    private final int Id;
+    private final String Name;
+    private final String Original_Name;
+    private final String IllustrationLink;
+    private final String Genre;
+    private final boolean IsManga;
     private int NbTomes;
     private int EditeurID;
-    private boolean IsAnime;
+    private final boolean IsAnime;
     private int NbSaisons;
     private int NbEpisodesTotal;
     private int StudioID;
-    private int LicenceID;
-    private boolean isSponsorised;
+    private final int LicenceID;
+    private final boolean isSponsorised;
 
-    private ArrayList<Commentaire> Commentaires = new ArrayList<>();
+    private final ArrayList<Commentaire> Commentaires = new ArrayList<>();
 
     public Reference(JSONObject optJSONObject) {
         this.Id = optJSONObject.optInt("id");
@@ -29,24 +29,14 @@ public class Reference {
         this.IllustrationLink = optJSONObject.optString("illustrationlink");
         this.Genre = optJSONObject.optString("genre");
 
-        if(optJSONObject.optInt("isManga") == 1){
-            this.IsManga = true;
-        }
-        else {
-            this.IsManga = false;
-        }
+        this.IsManga = optJSONObject.optInt("isManga") == 1;
 
         if(this.IsManga){
             this.NbTomes = optJSONObject.optInt("nbTomes");
-            this.EditeurID = optJSONObject.optInt("edition");;
+            this.EditeurID = optJSONObject.optInt("edition");
         }
 
-        if(optJSONObject.optInt("IsAnime") == 1){
-            this.IsAnime = true;
-        }
-        else {
-            this.IsAnime = false;
-        }
+        this.IsAnime = optJSONObject.optInt("IsAnime") == 1;
 
         if(this.IsAnime){
             this.NbSaisons = optJSONObject.optInt("nbSaisons");
@@ -118,15 +108,8 @@ public class Reference {
         return Commentaires;
     }
 
-    public void setCommentaires(ArrayList<Commentaire> commentaires) {
-        Commentaires = commentaires;
-    }
-
     public void addCommentaire(Commentaire commentaire){
         this.Commentaires.add(commentaire);
     }
 
-    public void remCommentaire(Commentaire commentaire){
-        this.Commentaires.remove(commentaire);
-    }
 }

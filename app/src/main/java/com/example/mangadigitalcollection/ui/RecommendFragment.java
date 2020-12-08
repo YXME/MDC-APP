@@ -4,10 +4,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-
-import androidx.annotation.RequiresApi;
-import androidx.fragment.app.Fragment;
-
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -19,8 +15,10 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
+import androidx.fragment.app.Fragment;
+
 import com.example.mangadigitalcollection.DataFromAPI;
-import com.example.mangadigitalcollection.MainActivity;
 import com.example.mangadigitalcollection.R;
 import com.example.mangadigitalcollection.ReferenceActivity;
 import com.example.mangadigitalcollection.dataStorage.Ads;
@@ -28,30 +26,16 @@ import com.example.mangadigitalcollection.dataStorage.Reference;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
 
 
 public class RecommendFragment extends Fragment {
 
-    private View view;
-
-    private TableLayout TableContainer;
-    private String token;
-
-    private ArrayList<Reference> Recommended = new ArrayList<>();
-    private ArrayList<Ads> AdList;
+    private final ArrayList<Reference> Recommended = new ArrayList<>();
 
     public RecommendFragment() {
         // Required empty public constructor
-    }
-
-    public static RecommendFragment newInstance() {
-        RecommendFragment fragment = new RecommendFragment();
-
-        return fragment;
     }
 
     @Override
@@ -63,19 +47,18 @@ public class RecommendFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_recommend, container, false);
-        token = getActivity().getIntent().getStringExtra("TOKEN");
+        View view = inflater.inflate(R.layout.fragment_recommend, container, false);
 
         DataFromAPI.FetchDataFromAPI();
-        TableContainer = view.findViewById(R.id.tableContainer);
+        TableLayout tableContainer = view.findViewById(R.id.tableContainer);
 
         Recommended.addAll(DataFromAPI.getReferenceList());
+
         for(int i = 0; i < Recommended.size(); i++){
             if (!Recommended.get(i).isSponsorised()) Recommended.remove(i);
         }
 
-        AdList = DataFromAPI.getAdsList();
+        ArrayList<Ads> adList = DataFromAPI.getAdsList();
 
         int Max = 8;
         if(Recommended.size() < 8){
@@ -89,7 +72,6 @@ public class RecommendFragment extends Fragment {
             ImageView illustration = new ImageView(getActivity());
 
             if(i == 2 || i == 5){
-                Random AdId = new Random();
 
                 row.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT));
                 layout.setOrientation(LinearLayout.HORIZONTAL);
@@ -99,7 +81,7 @@ public class RecommendFragment extends Fragment {
                         LinearLayout.LayoutParams.WRAP_CONTENT
                 );
 
-                Picasso.get().load(AdList.get(ThreadLocalRandom.current().nextInt(0, 3 + 1)).getUrl()).resize(700, 1000).into(illustration);
+                Picasso.get().load(adList.get(ThreadLocalRandom.current().nextInt(0, 3 + 1)).getUrl()).resize(700, 1000).into(illustration);
 
                 illustration.setLayoutParams(params);
                 illustration.getLayoutParams().width = 400;
@@ -107,7 +89,7 @@ public class RecommendFragment extends Fragment {
 
                 layout.addView(illustration);
                 row.addView(layout);
-                TableContainer.addView(row);
+                tableContainer.addView(row);
             }
             else {
                 TextView title = new TextView(getActivity());
@@ -145,14 +127,13 @@ public class RecommendFragment extends Fragment {
                 layout.addView(illustration);
                 layout.addView(title);
                 row.addView(layout);
-                TableContainer.addView(row);
+                tableContainer.addView(row);
                 int finalI = i;
                 row.setOnClickListener(v -> {
                     Intent intent = new Intent(getActivity(), ReferenceActivity.class);
                     intent.putExtra("REFERENCE_ID", Recommended.get(finalI).getId());
                     intent.putExtra("FROM", 1);
                     startActivity(intent);
-                    getActivity().finish();
                 });
             }
         }

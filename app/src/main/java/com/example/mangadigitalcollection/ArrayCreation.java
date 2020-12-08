@@ -1,10 +1,8 @@
 package com.example.mangadigitalcollection;
 
 import android.os.Build;
-import android.os.Bundle;
 
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mangadigitalcollection.dataStorage.Ads;
 import com.example.mangadigitalcollection.dataStorage.Commentaire;
@@ -88,7 +86,7 @@ public class ArrayCreation {
             Liste ToAdd = new Liste(jlistHeaderArray.optJSONObject(i));
 
             ArrayList<Reference> ReferenceList = DataFromAPI.getReferenceList();
-            ArrayList<Integer> ReferenceIds = new ArrayList<Integer>();
+            ArrayList<Integer> ReferenceIds = new ArrayList<>();
             RelationListRefListe.forEach((x) ->{
                 if(x.getListeId() == ToAdd.getId()) {
                     ReferenceIds.add(x.getReferenceId());
