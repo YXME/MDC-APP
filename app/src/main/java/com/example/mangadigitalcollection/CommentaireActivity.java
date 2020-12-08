@@ -110,7 +110,7 @@ public class CommentaireActivity extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.action_profil:
-                        startActivity(new Intent(getApplicationContext(), ProfilActivity.class).putExtra("USER_ID", DataFromAPI.getCurrentUserID()));
+                        startActivity(new Intent(getApplicationContext(), ProfilActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                 }

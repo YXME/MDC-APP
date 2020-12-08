@@ -127,7 +127,7 @@ public class ListeActivity extends AppCompatActivity {
             });
         }
 
-        if(DataFromAPI.getCurrentUserID() == SelectedListe.getUserId()){
+        if(DataFromAPI.getCurrentUserID().equals(DataFromAPI.getUserList().get(SelectedListe.getUserId() - 1).getEmail())){
             AddToList.setVisibility(View.VISIBLE);
             AddToList.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -25,86 +25,65 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <LinearLayout
-        android:layout_width="411dp"
+    <ImageView
+        android:id="@+id/profilePicture"
+        android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_marginTop="48dp"
-        android:orientation="horizontal"
+        android:layout_weight="1"
+        android:contentDescription="@string/referenceimage"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TableLayout
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="49dp"
+        android:layout_marginEnd="6dp"
+        android:layout_weight="1"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/profilePicture"
-            android:layout_width="379dp"
-            android:layout_height="200dp"
-            android:layout_weight="1"
-            android:contentDescription="@string/referenceimage"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <TableRow
+            android:id="@+id/usernameContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <TableLayout
-            android:layout_width="411dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:paddingStart="3dp"
-            android:paddingEnd="3dp">
-
-            <TableRow
+            <TextView
+                android:id="@+id/pseudonyme"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:textColor="#FFDE07"
+                android:textSize="25sp"
+                android:visibility="visible" />
+        </TableRow>
 
-                <TextView
-                    android:id="@+id/pseudonyme"
-                    android:layout_width="match_parent"
-                    android:textColor="#FFDE07"
-                    android:textSize="25sp"
-                    android:layout_gravity="center"
-                    android:textAlignment="center"
-                    android:visibility="visible" />
-            </TableRow>
+        <TableRow
+            android:id="@+id/bioContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <TableRow
+            <TextView
+                android:id="@+id/biographie"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="63dp"
+                android:ellipsize="end"
+                android:maxLines="3"
+                android:visibility="visible" />
+        </TableRow>
 
-                <TextView
-                    android:id="@+id/biographie"
-                    android:layout_width="match_parent"
-                    android:layout_height="50sp"
-                    android:visibility="visible" />
-            </TableRow>
+    </TableLayout>
 
-            <TableRow
-                android:id="@+id/themeButtonContainer"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:visibility="gone">
-
-                <Button
-                    android:id="@+id/themeButton"
-                    android:layout_width="219dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/themeSwitcher" />
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/disconnectButtonContainer"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:visibility="gone">
-
-                <Button
-                    android:id="@+id/disconnectButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/disconnect" />
-            </TableRow>
-        </TableLayout>
-    </LinearLayout>
-
+    <Button
+        android:id="@+id/disconnectButton"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="156dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/disconnect"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -125,10 +104,10 @@
                     android:id="@+id/textView3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
                     android:text="@string/listes"
                     android:textColor="#FFDE07"
-                    android:textSize="25sp"
-                    android:layout_marginStart="5dp"/>
+                    android:textSize="25sp" />
             </TableRow>
 
             <TableRow
@@ -141,7 +120,7 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:text="@string/createList"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
             </TableRow>
 
         </TableLayout>
@@ -157,3 +136,18 @@
         app:menu="@menu/bottom_navigation_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--<TableRow
+        android:id="@+id/themeButtonContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/themeButton"
+            android:layout_width="219dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/themeSwitcher" />
+    </TableRow>-->

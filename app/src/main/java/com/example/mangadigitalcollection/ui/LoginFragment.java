@@ -112,6 +112,7 @@ public class LoginFragment extends Fragment {
                 } else {
                     Intent intent = new Intent(getActivity(), MainActivity.class);
                     DataFromAPI.setToken(response);
+                    DataFromAPI.setCurrentUserID(Email.getText().toString());
                     startActivity(intent);
                     getActivity().finish();
                 }

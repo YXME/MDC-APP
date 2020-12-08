@@ -19,6 +19,7 @@ import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -41,7 +42,7 @@ public class ProfilActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
 
-    TableRow ThemeButtonContainer, DisconnectButtonContainer;
+    TableRow ThemeButtonContainer, UsernameContainer, BioContainer;
     Button ThemeButton, DisconnectButton, CreateList;
     TextView Pseudonyme, Biographie;
     User ThisUser;
@@ -58,7 +59,10 @@ public class ProfilActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profil);
 
-        int UserIdProfile = getIntent().getIntExtra("USER_ID", 1);
+        int UserIdProfile = getIntent().getIntExtra("USER_ID", -1);
+        if (UserIdProfile == -1)
+            UserIdProfile = (DataFromAPI.getUserList().stream().filter(a -> (a.getEmail().equals(DataFromAPI.getCurrentUserID()))).findFirst().orElse(null)).getId();
+
         ThisUser = DataFromAPI.getUserList().get(UserIdProfile - 1);
 
         ActionBar actionBar = getSupportActionBar();
@@ -67,16 +71,30 @@ public class ProfilActivity extends AppCompatActivity {
         ProfilePicture = findViewById(R.id.profilePicture);
         Picasso.get().load(ThisUser.getPictureUrl()).resize(500, 500).into(ProfilePicture);
 
+        TableRow.LayoutParams textParams = new TableRow.LayoutParams(
+                TableRow.LayoutParams.MATCH_PARENT,
+                TableRow.LayoutParams.WRAP_CONTENT
+        );
+
+        UsernameContainer = findViewById(R.id.usernameContainer);
+        BioContainer = findViewById(R.id.bioContainer);
+
+        UsernameContainer.setLayoutParams(textParams);
+        BioContainer.setLayoutParams(textParams);
+
         Pseudonyme = findViewById(R.id.pseudonyme);
+
+        Pseudonyme.setLayoutParams(textParams);
         Pseudonyme.setText(ThisUser.getUsername());
 
         Biographie = findViewById(R.id.biographie);
+        Biographie.setLayoutParams(textParams);
         Biographie.setText(ThisUser.getBiographie());
         Biographie.setMaxLines(3);
         Biographie.setEllipsize(TextUtils.TruncateAt.END);
 
-        ThemeButtonContainer = findViewById(R.id.themeButtonContainer);
-        DisconnectButtonContainer = findViewById(R.id.disconnectButtonContainer);
+        Biographie.getLayoutParams().width = 680;
+        Biographie.getLayoutParams().height = 500;
 
         UserListesContainer = findViewById(R.id.userListesContainer);
 
@@ -86,9 +104,9 @@ public class ProfilActivity extends AppCompatActivity {
             }
         });
 
-        if(DataFromAPI.getCurrentUserID() == UserIdProfile){
+        if(DataFromAPI.getCurrentUserID().equals(ThisUser.getEmail())){
 
-            if(!UserListes.isEmpty())
+            if(!UserListes.isEmpty()){
                 for(int i = 0; i < UserListes.size(); i++) {
                     TableRow row = new TableRow(ProfilActivity.this);
                     LinearLayout layout = new LinearLayout(ProfilActivity.this);
@@ -155,84 +173,61 @@ public class ProfilActivity extends AppCompatActivity {
                     row.addView(layout);
                     UserListesContainer.addView(row);
                 }
+            }
 
             CreateList = findViewById(R.id.createList);
-            //ThemeButtonContainer.setVisibility(View.VISIBLE);
-            DisconnectButtonContainer.setVisibility(View.VISIBLE);
             CreateList.setVisibility(View.VISIBLE);
 
-            ThemeButton = findViewById(R.id.themeButton);
             DisconnectButton = findViewById(R.id.disconnectButton);
+            DisconnectButton.setVisibility(View.VISIBLE);
 
-
-            ThemeButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    /*if(getTheme().equals(R.style.Theme_AppCompat_NoActionBar)){
-                        getApplication().setTheme(R.style.Theme_AppCompat_Light_NoActionBar);
-                    }
-                    else{
-                        getApplication().setTheme(R.style.Theme_AppCompat_Light_NoActionBar);
-                    }*/
-                }
+            DisconnectButton.setOnClickListener(v -> {
+                DataFromAPI.reset();
+                Intent intent = new Intent(getApplicationContext(), SplashScreen.class);
+                startActivity(intent);
+                finishAffinity();
             });
 
-            DisconnectButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    DataFromAPI.reset();
-                    Intent intent = new Intent(getApplicationContext(), SplashScreen.class);
-                    startActivity(intent);
-                    finishAffinity();
-                }
-            });
+            int finalUserIdProfile = UserIdProfile;
+            CreateList.setOnClickListener(v -> {
+                final EditText input = new EditText(ProfilActivity.this);
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.MATCH_PARENT);
+                input.setLayoutParams(lp);
 
-            CreateList.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    final EditText input = new EditText(ProfilActivity.this);
-                    LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
-                            LinearLayout.LayoutParams.MATCH_PARENT,
-                            LinearLayout.LayoutParams.MATCH_PARENT);
-                    input.setLayoutParams(lp);
-
-                    new AlertDialog.Builder(ProfilActivity.this)
-                            .setTitle("Nommez votre nouvelle liste : ")
-                            .setMessage("Maybe it will be JoJo... or JoJo... or JoJo... or Jojo...")
-                            .setView(input)
-
-                            // Specifying a listener allows you to take an action before dismissing the dialog.
-                            // The dialog is automatically dismissed when a dialog button is clicked.
-                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    if(input.getText() == null){
-                                        return;
-                                    }
-
-                                    ConnexionRest connexionRest = new ConnexionRest();
-                                    JSONObject DataToAdd = new JSONObject();
-                                    try {
-                                        DataToAdd.put("name", input.getText());
-                                        DataToAdd.put("userId", UserIdProfile);
-                                        connexionRest.setObj(DataToAdd);
-                                        connexionRest.setToken(DataFromAPI.getToken());
-                                        connexionRest.setAction("Listes");
-                                        connexionRest.execute("POST");
-                                        DataFromAPI.FetchDataFromAPI();
-
-                                        Intent intent = new Intent(getApplicationContext(), ListeActivity.class);
-                                        intent.putExtra("SELECTED_LISTE", DataFromAPI.getListesList().size());
-                                        intent.putExtra("FROM", 4);
-                                        startActivity(intent);
-                                    } catch (JSONException e) {
-                                        e.printStackTrace();
-                                    }
+                new AlertDialog.Builder(ProfilActivity.this)
+                        .setTitle("Nommez votre nouvelle liste : ")
+                        .setMessage("Maybe it will be JoJo... or JoJo... or JoJo... or Jojo...")
+                        .setView(input)
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                if(input.getText() == null){
+                                    return;
                                 }
-                            })
-                            .setNegativeButton("Annuler", null)
-                            .setIcon(android.R.drawable.btn_plus)
-                            .show();
-                }
+                                ConnexionRest connexionRest = new ConnexionRest();
+                                JSONObject DataToAdd = new JSONObject();
+                                try {
+                                    DataToAdd.put("name", input.getText());
+                                    DataToAdd.put("userId", finalUserIdProfile);
+                                    connexionRest.setObj(DataToAdd);
+                                    connexionRest.setToken(DataFromAPI.getToken());
+                                    connexionRest.setAction("Listes");
+                                    connexionRest.execute("POST");
+                                    DataFromAPI.FetchDataFromAPI();
+
+                                    Intent intent = new Intent(getApplicationContext(), ListeActivity.class);
+                                    intent.putExtra("SELECTED_LISTE", DataFromAPI.getListesList().size());
+                                    intent.putExtra("FROM", 4);
+                                    startActivity(intent);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        })
+                        .setNegativeButton("Annuler", null)
+                        .setIcon(android.R.drawable.btn_plus)
+                        .show();
             });
         }
 

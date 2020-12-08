@@ -21,7 +21,7 @@ import java.util.concurrent.ExecutionException;
 public class DataFromAPI {
 
     private static String token;
-    private static int CurrentUserID;
+    private static String CurrentUserID;
 
     private static ArrayList<User> UserList = new ArrayList<User>();
     private static ArrayList<Reference> ReferenceList = new ArrayList<Reference>();
@@ -36,9 +36,6 @@ public class DataFromAPI {
     @RequiresApi(api = Build.VERSION_CODES.N)
     public static void FetchDataFromAPI()
     {
-        //TODO : Remplacer par la valeur récupéré sur l'API à l'authentification.
-        CurrentUserID = 1;
-        //////////////////
         FetchReferenceFromAPI();
         FetchUserFromAPI();
         FetchLicenceFromAPI();
@@ -233,11 +230,11 @@ public class DataFromAPI {
         return null;
     }
 
-    public static int getCurrentUserID() {
+    public static String getCurrentUserID() {
         return CurrentUserID;
     }
 
-    public static void setCurrentUserID(int currentUserID) {
+    public static void setCurrentUserID(String currentUserID) {
         CurrentUserID = currentUserID;
     }
 
@@ -283,7 +280,7 @@ public class DataFromAPI {
 
     public static void reset() {
         token = null;
-        CurrentUserID = -1;
+        CurrentUserID = null;
         UserList.clear();
         ReferenceList.clear();
         LicenceList.clear();

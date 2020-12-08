@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-feature android:name="android.hardware.screen.portrait" />
 
     <application
         android:allowBackup="true"
@@ -14,21 +13,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MangaDigitalCollection"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ListeActivity"></activity>
-        <activity android:name=".CommentaireActivity" />
-        <activity android:name=".ReferenceActivity" />
-        <activity android:name=".SearchActivity" />
-        <activity android:name=".RandomActivity" />
-        <activity android:name=".ProfilActivity" />
-        <activity android:name=".LoginRegisterActivity" />
-        <activity android:name=".SplashScreen">
+        <activity android:name=".ListeActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".CommentaireActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ReferenceActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".SearchActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".RandomActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ProfilActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".LoginRegisterActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".SplashScreen" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity" android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
