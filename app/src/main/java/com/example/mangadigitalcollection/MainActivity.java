@@ -10,6 +10,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.mangadigitalcollection.ui.PagerAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
 
@@ -78,14 +79,17 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.action_recherche:
                         startActivity(new Intent(getApplicationContext(), SearchActivity.class));
                         overridePendingTransition(0,0);
+                        this.finish();
                         return true;
                 case R.id.action_random:
                     startActivity(new Intent(getApplicationContext(), RandomActivity.class));
                     overridePendingTransition(0,0);
+                    this.finish();
                     return true;
                 case R.id.action_profil:
                     startActivity(new Intent(getApplicationContext(), ProfilActivity.class));
                     overridePendingTransition(0,0);
+                    this.finish();
                     return true;
             }
             return false;

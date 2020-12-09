@@ -1,4 +1,4 @@
-package com.example.mangadigitalcollection;
+package com.example.mangadigitalcollection.api;
 
 import android.os.Build;
 

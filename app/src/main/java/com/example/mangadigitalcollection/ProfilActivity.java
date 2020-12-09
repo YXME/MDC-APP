@@ -21,6 +21,8 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.mangadigitalcollection.api.ConnexionRest;
+import com.example.mangadigitalcollection.api.DataFromAPI;
 import com.example.mangadigitalcollection.dataStorage.Liste;
 import com.example.mangadigitalcollection.dataStorage.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -30,6 +32,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ProfilActivity extends AppCompatActivity {
 
@@ -58,7 +61,7 @@ public class ProfilActivity extends AppCompatActivity {
 
         int UserIdProfile = getIntent().getIntExtra("USER_ID", -1);
         if (UserIdProfile == -1)
-            UserIdProfile = (DataFromAPI.getUserList().stream().filter(a -> (a.getEmail().equals(DataFromAPI.getCurrentUserID()))).findFirst().orElse(null)).getId();
+            UserIdProfile = (Objects.requireNonNull(DataFromAPI.getUserList().stream().filter(a -> (a.getEmail().equals(DataFromAPI.getCurrentUserID()))).findFirst().orElse(null))).getId();
 
         ThisUser = DataFromAPI.getUserList().get(UserIdProfile - 1);
 
@@ -174,7 +177,7 @@ public class ProfilActivity extends AppCompatActivity {
 
             DisconnectButton.setOnClickListener(v -> {
                 DataFromAPI.reset();
-                Intent intent = new Intent(getApplicationContext(), SplashScreen.class);
+                Intent intent = new Intent(getApplicationContext(), SplashScreenActivity.class);
                 startActivity(intent);
                 finishAffinity();
             });
@@ -267,14 +270,17 @@ public class ProfilActivity extends AppCompatActivity {
                 case R.id.action_accueil:
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
                     overridePendingTransition(0,0);
+                    this.finish();
                     return true;
                 case R.id.action_recherche:
                     startActivity(new Intent(getApplicationContext(), SearchActivity.class));
                     overridePendingTransition(0,0);
+                    this.finish();
                     return true;
                 case R.id.action_random:
                     startActivity(new Intent(getApplicationContext(), RandomActivity.class));
                     overridePendingTransition(0,0);
+                    this.finish();
                     return true;
             }
             return false;

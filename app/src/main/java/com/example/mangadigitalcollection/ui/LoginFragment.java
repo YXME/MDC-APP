@@ -13,10 +13,10 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.mangadigitalcollection.ConnexionRest;
-import com.example.mangadigitalcollection.DataFromAPI;
 import com.example.mangadigitalcollection.MainActivity;
 import com.example.mangadigitalcollection.R;
+import com.example.mangadigitalcollection.api.ConnexionRest;
+import com.example.mangadigitalcollection.api.DataFromAPI;
 
 import org.json.JSONException;
 import org.json.JSONObject;

@@ -18,7 +18,7 @@ import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
-import com.example.mangadigitalcollection.DataFromAPI;
+import com.example.mangadigitalcollection.api.DataFromAPI;
 import com.example.mangadigitalcollection.R;
 import com.example.mangadigitalcollection.ReferenceActivity;
 import com.example.mangadigitalcollection.dataStorage.Ads;
@@ -26,7 +26,6 @@ import com.example.mangadigitalcollection.dataStorage.Reference;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
 
 

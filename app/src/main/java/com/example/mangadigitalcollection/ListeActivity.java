@@ -22,6 +22,8 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.mangadigitalcollection.api.ConnexionRest;
+import com.example.mangadigitalcollection.api.DataFromAPI;
 import com.example.mangadigitalcollection.dataStorage.Liste;
 import com.example.mangadigitalcollection.dataStorage.Reference;
 import com.google.android.material.bottomnavigation.BottomNavigationView;

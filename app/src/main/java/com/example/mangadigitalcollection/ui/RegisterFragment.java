@@ -11,8 +11,8 @@ import android.widget.EditText;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.mangadigitalcollection.ConnexionRest;
-import com.example.mangadigitalcollection.DataFromAPI;
+import com.example.mangadigitalcollection.api.ConnexionRest;
+import com.example.mangadigitalcollection.api.DataFromAPI;
 import com.example.mangadigitalcollection.MainActivity;
 import com.example.mangadigitalcollection.R;
 

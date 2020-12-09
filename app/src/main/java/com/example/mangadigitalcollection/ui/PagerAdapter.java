@@ -1,4 +1,4 @@
-package com.example.mangadigitalcollection;
+package com.example.mangadigitalcollection.ui;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;

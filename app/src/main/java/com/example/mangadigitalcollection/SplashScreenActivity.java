@@ -7,7 +7,7 @@ import android.os.Handler;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class SplashScreen extends AppCompatActivity {
+public class SplashScreenActivity extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -20,9 +20,9 @@ public class SplashScreen extends AppCompatActivity {
 
         int SPLASH_DISPLAY_LENGTH = 1000;
         new Handler().postDelayed(() -> {
-            Intent mainIntent = new Intent(SplashScreen.this,LoginRegisterActivity.class);
-            SplashScreen.this.startActivity(mainIntent);
-            SplashScreen.this.finish();
+            Intent mainIntent = new Intent(SplashScreenActivity.this,LoginRegisterActivity.class);
+            SplashScreenActivity.this.startActivity(mainIntent);
+            SplashScreenActivity.this.finish();
         }, SPLASH_DISPLAY_LENGTH);
     }
 }

@@ -42,29 +42,32 @@
 
             <TextView
                 android:id="@+id/ListeTitre"
-                android:layout_width="0dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
+                android:maxLines="1"
+                android:ellipsize="end"
                 android:text=""
                 android:textColor="#FFDE07"
                 android:textSize="25sp" />
 
             <Button
                 android:id="@+id/addToList"
-                android:layout_width="wrap_content"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
+                android:textSize="12sp"
                 android:layout_weight="1"
                 android:text="@string/addToList"
-                android:visibility="gone" />
+                android:visibility="gone"/>
 
 
         </LinearLayout>
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="731dp"
             android:layout_marginTop="108dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">

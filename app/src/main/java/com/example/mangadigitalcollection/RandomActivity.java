@@ -11,6 +11,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 
+import com.example.mangadigitalcollection.api.DataFromAPI;
 import com.example.mangadigitalcollection.dataStorage.Reference;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -127,14 +128,17 @@ public class RandomActivity extends AppCompatActivity {
                 case R.id.action_accueil:
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
                     overridePendingTransition(0,0);
+                    this.finish();
                     return true;
                 case R.id.action_recherche:
                     startActivity(new Intent(getApplicationContext(), SearchActivity.class));
                     overridePendingTransition(0,0);
+                    this.finish();
                     return true;
                 case R.id.action_profil:
                     startActivity(new Intent(getApplicationContext(), ProfilActivity.class));
                     overridePendingTransition(0,0);
+                    this.finish();
                     return true;
             }
             return false;

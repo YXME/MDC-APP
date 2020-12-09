@@ -12,11 +12,14 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.mangadigitalcollection.api.ConnexionRest;
+import com.example.mangadigitalcollection.api.DataFromAPI;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 
 public class CommentaireActivity extends AppCompatActivity {
@@ -36,7 +39,7 @@ public class CommentaireActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) actionBar.hide();
 
-        int userID = (DataFromAPI.getUserList().stream().filter(a -> (a.getEmail().equals(DataFromAPI.getCurrentUserID()))).findFirst().orElse(null)).getId();
+        int userID = (Objects.requireNonNull(DataFromAPI.getUserList().stream().filter(a -> (a.getEmail().equals(DataFromAPI.getCurrentUserID()))).findFirst().orElse(null))).getId();
         int referenceID = getIntent().getIntExtra("REFERENCE_ID", - 1);
         if(referenceID == -1) {
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
