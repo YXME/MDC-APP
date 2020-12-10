@@ -57,9 +57,8 @@ public class ListeActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) actionBar.hide();
 
-        DataFromAPI.FetchDataFromAPI();
         DataFromAPI.getListesList().forEach(a -> {
-            if(a.getId() == getIntent().getIntExtra("SELECTED_LISTE", 1)){
+            if(a.getId() == getIntent().getIntExtra("SELECTED_LISTE", -1)){
                 SelectedListe = a;
             }
         });
@@ -174,18 +173,22 @@ public class ListeActivity extends AppCompatActivity {
                 case R.id.action_accueil:
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
                     overridePendingTransition(0,0);
+                    this.finish();
                     return true;
                 case R.id.action_recherche:
                     startActivity(new Intent(getApplicationContext(), SearchActivity.class));
                     overridePendingTransition(0,0);
+                    this.finish();
                     return true;
                 case R.id.action_random:
                     startActivity(new Intent(getApplicationContext(), RandomActivity.class));
                     overridePendingTransition(0,0);
+                    this.finish();
                     return true;
                 case R.id.action_profil:
                     startActivity(new Intent(getApplicationContext(), ProfilActivity.class));
                     overridePendingTransition(0,0);
+                    this.finish();
                     return true;
             }
             return false;

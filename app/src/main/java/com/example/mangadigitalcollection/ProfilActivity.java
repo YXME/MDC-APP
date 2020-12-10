@@ -33,6 +33,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.concurrent.ExecutionException;
 
 public class ProfilActivity extends AppCompatActivity {
 
@@ -207,13 +208,16 @@ public class ProfilActivity extends AppCompatActivity {
                                 connexionRest.setToken(DataFromAPI.getToken());
                                 connexionRest.setAction("Listes");
                                 connexionRest.execute("POST");
+                                connexionRest.get();
                                 DataFromAPI.FetchDataFromAPI();
 
                                 Intent intent = new Intent(getApplicationContext(), ListeActivity.class);
-                                intent.putExtra("SELECTED_LISTE", DataFromAPI.getListesList().size());
+                                intent.putExtra("SELECTED_LISTE", DataFromAPI.getListesList().get(DataFromAPI.getListesList().size() - 1).getId());
                                 intent.putExtra("FROM", 4);
                                 startActivity(intent);
-                            } catch (JSONException e) {
+                                this.recreate();
+
+                            } catch (JSONException | InterruptedException | ExecutionException e) {
                                 e.printStackTrace();
                             }
                         })
